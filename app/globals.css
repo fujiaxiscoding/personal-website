@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm, understated neutrals rather than pure black/white */
+  --canvas: #fdfcfb;
+  --canvas-muted: #f4f2ee;
+  --ink: #181814;
+  --ink-muted: #6f6d67;
+  --line: #e7e3dc;
+  --accent: #ac4d2b;
+  --accent-ink: #fdfcfb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #121110;
+    --canvas-muted: #1a1917;
+    --ink: #f3f1ec;
+    --ink-muted: #a6a39c;
+    --line: #2a2825;
+    --accent: #e0785a;
+    --accent-ink: #121110;
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-canvas-muted: var(--canvas-muted);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --container-content: 72rem;
+  --container-prose: 42rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
