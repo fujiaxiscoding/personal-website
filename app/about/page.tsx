@@ -6,8 +6,9 @@ import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Reveal } from "@/components/animations/Reveal";
-import { StaggerList, StaggerItem } from "@/components/animations/StaggerList";
-import { cn } from "@/lib/utils";
+import { TextReveal } from "@/components/animations/TextReveal";
+import { Magnetic } from "@/components/animations/Magnetic";
+import { StoryBeat } from "@/components/about/StoryBeat";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -50,20 +51,29 @@ const skills = [
 export default function AboutPage() {
   return (
     <>
-      <Section className="pb-16 pt-16 sm:pt-24">
+      <Section className="pb-16 pt-24 sm:pt-32">
         <PageContainer>
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-[1.2fr_1fr] sm:gap-16">
-            <FadeIn>
-              <p className="text-sm font-medium text-accent">About</p>
-              <h1 className="mt-4 text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-                Hi, I&apos;m {siteConfig.name.split(" ")[0]}.
+            <div>
+              <FadeIn>
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+                  About
+                </p>
+              </FadeIn>
+              <h1 className="mt-5 font-serif text-4xl tracking-tight text-ink sm:text-5xl">
+                <TextReveal
+                  lines={[`Hi, I'm ${siteConfig.name.split(" ")[0]}.`]}
+                  delay={0.1}
+                />
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
-                {siteConfig.bio}
-              </p>
-            </FadeIn>
+              <FadeIn delay={0.5}>
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
+                  {siteConfig.bio}
+                </p>
+              </FadeIn>
+            </div>
 
-            <FadeIn delay={0.1}>
+            <FadeIn delay={0.15}>
               <div className="aspect-[4/5] w-full overflow-hidden rounded-lg bg-canvas-muted" />
             </FadeIn>
           </div>
@@ -73,42 +83,29 @@ export default function AboutPage() {
       <Section className="border-t border-line">
         <PageContainer>
           <Reveal>
-            <h2 className="text-2xl font-medium tracking-tight text-ink">
+            <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
               How I work
             </h2>
           </Reveal>
 
-          <StaggerList className="mt-10">
+          <div className="mt-4">
             {principles.map((principle, index) => (
-              <StaggerItem key={principle.number}>
-                <div
-                  className={cn(
-                    "grid grid-cols-1 gap-2 py-8 sm:grid-cols-[auto_1fr] sm:gap-8",
-                    index !== 0 && "border-t border-line",
-                  )}
-                >
-                  <span className="font-mono text-sm text-accent">
-                    {principle.number}
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-medium text-ink">
-                      {principle.title}
-                    </h3>
-                    <p className="mt-2 max-w-2xl text-base leading-relaxed text-ink-muted">
-                      {principle.description}
-                    </p>
-                  </div>
-                </div>
-              </StaggerItem>
+              <StoryBeat
+                key={principle.number}
+                number={principle.number}
+                title={principle.title}
+                description={principle.description}
+                isFirst={index === 0}
+              />
             ))}
-          </StaggerList>
+          </div>
         </PageContainer>
       </Section>
 
       <Section className="border-t border-line">
         <PageContainer>
           <Reveal>
-            <h2 className="text-2xl font-medium tracking-tight text-ink">
+            <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
               Tools &amp; practices
             </h2>
             <div className="mt-6 flex flex-wrap gap-2">
@@ -123,13 +120,15 @@ export default function AboutPage() {
       <Section className="border-t border-line pb-28">
         <PageContainer>
           <Reveal className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="max-w-md text-2xl font-medium tracking-tight text-ink">
+            <h2 className="max-w-md font-serif text-3xl tracking-tight text-ink sm:text-4xl">
               {siteConfig.openTo}
             </h2>
-            <Button href="/contact">
-              Get in touch
-              <ArrowRight className="size-4" />
-            </Button>
+            <Magnetic>
+              <Button href="/contact">
+                Get in touch
+                <ArrowRight className="size-4" />
+              </Button>
+            </Magnetic>
           </Reveal>
         </PageContainer>
       </Section>

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Section } from "@/components/layout/Section";
+import { BeforeTheyAreNamed } from "@/components/work/BeforeTheyAreNamed";
 import { CaseStudyHero } from "@/components/work/CaseStudyHero";
 import { PrevNextProject } from "@/components/work/PrevNextProject";
 import { FadeIn } from "@/components/animations/FadeIn";
@@ -42,14 +43,26 @@ export default async function CaseStudyPage({
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  const { content } = getProjectSource(slug);
   const allProjects = getAllProjects();
   const index = allProjects.findIndex((p) => p.slug === slug);
   const prev = allProjects[index + 1];
   const next = allProjects[index - 1];
 
+  if (project.template === "art") {
+    return (
+      <Section className="pb-28 pt-24 sm:pt-32">
+        <PageContainer>
+          <BeforeTheyAreNamed />
+          <PrevNextProject prev={prev} next={next} />
+        </PageContainer>
+      </Section>
+    );
+  }
+
+  const { content } = getProjectSource(slug);
+
   return (
-    <Section className="pb-28 pt-16 sm:pt-24">
+    <Section className="pb-28 pt-24 sm:pt-32">
       <PageContainer>
         <FadeIn>
           <CaseStudyHero project={project} />

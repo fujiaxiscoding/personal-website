@@ -20,7 +20,7 @@ export function Nav() {
         >
           <Link
             href="/"
-            className="text-sm font-medium tracking-tight text-ink transition-opacity hover:opacity-70"
+            className="font-serif text-lg italic tracking-tight text-ink transition-opacity hover:opacity-70"
           >
             {siteConfig.name}
           </Link>

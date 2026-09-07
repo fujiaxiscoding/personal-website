@@ -1,4 +1,5 @@
 import { Tag } from "@/components/ui/Tag";
+import { TextReveal } from "@/components/animations/TextReveal";
 import type { Project } from "@/types/project";
 
 export function CaseStudyHero({ project }: { project: Project }) {
@@ -17,16 +18,18 @@ export function CaseStudyHero({ project }: { project: Project }) {
         ))}
       </div>
 
-      <h1 className="mt-4 max-w-3xl text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-        {project.title}
+      <h1 className="mt-5 max-w-3xl font-serif text-4xl italic tracking-tight text-ink sm:text-6xl">
+        <TextReveal lines={[project.title]} />
       </h1>
 
-      <p className="mt-4 max-w-2xl text-lg text-ink-muted">{project.summary}</p>
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+        {project.summary}
+      </p>
 
       <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-y border-line py-8 sm:grid-cols-4">
         {meta.map((item) => (
           <div key={item.label}>
-            <dt className="text-xs uppercase tracking-wide text-ink-muted">
+            <dt className="text-xs uppercase tracking-[0.14em] text-ink-muted">
               {item.label}
             </dt>
             <dd className="mt-1 text-sm text-ink">{item.value}</dd>

@@ -34,6 +34,7 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
 
   --container-content: 72rem;
   --container-prose: 42rem;
@@ -44,6 +45,7 @@
   --radius-xl: 1.75rem;
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-cinematic: cubic-bezier(0.65, 0, 0.15, 1);
 }
 
 body {
@@ -54,4 +56,76 @@ body {
 ::selection {
   background: var(--accent);
   color: var(--accent-ink);
+}
+
+/* Explicit, on-brand focus ring for keyboard users. Defined here rather than
+   left to browser defaults so it stays visible/consistent regardless of the
+   custom cursor's `cursor: none` or any element's background color. Modern
+   browsers already round the outline to match the element's own
+   border-radius, so pill-shaped buttons keep their shape when focused. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Custom cursor is only enabled by JS on fine-pointer, hover-capable,
+   motion-tolerant devices — see components/cursor/CursorProvider.tsx */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Flash-free preloader skip: see the inline script in app/layout.tsx head. */
+html.preloader-skip #loading-screen {
+  display: none !important;
+}
+
+/* Reduced-motion users never see the animated preloader at all. */
+@media (prefers-reduced-motion: reduce) {
+  #loading-screen {
+    display: none !important;
+  }
+}
+
+@media print {
+  #loading-screen,
+  .route-curtain,
+  .custom-cursor,
+  .site-nav {
+    display: none !important;
+  }
+
+  .print-page,
+  .print-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  figure,
+  figure img {
+    break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  figure img {
+    height: auto !important;
+    object-fit: contain !important;
+  }
 }

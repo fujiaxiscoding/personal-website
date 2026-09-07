@@ -4,6 +4,8 @@ import { PageContainer } from "@/components/layout/PageContainer";
 import { Section } from "@/components/layout/Section";
 import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
 import { FadeIn } from "@/components/animations/FadeIn";
+import { TextReveal } from "@/components/animations/TextReveal";
+import { Magnetic } from "@/components/animations/Magnetic";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -19,14 +21,18 @@ const links = [
 
 export default function ContactPage() {
   return (
-    <Section className="flex flex-1 items-center pb-28 pt-16 sm:pt-24">
+    <Section className="flex flex-1 items-center pb-28 pt-24 sm:pt-32">
       <PageContainer>
         <div className="max-w-2xl">
           <FadeIn>
-            <p className="text-sm font-medium text-accent">Contact</p>
-            <h1 className="mt-4 text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-              Let&apos;s talk.
-            </h1>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+              Contact
+            </p>
+          </FadeIn>
+          <h1 className="mt-5 font-serif text-4xl italic tracking-tight text-ink sm:text-6xl">
+            <TextReveal lines={["Let's talk."]} delay={0.1} />
+          </h1>
+          <FadeIn delay={0.45}>
             <p className="mt-6 text-lg leading-relaxed text-ink-muted">
               {siteConfig.openTo}{" "}
               Whether you have a role in mind or just want to talk about
@@ -34,13 +40,15 @@ export default function ContactPage() {
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.1}>
+          <FadeIn delay={0.55}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <CopyEmailButton email={siteConfig.email} />
+              <Magnetic>
+                <CopyEmailButton email={siteConfig.email} />
+              </Magnetic>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.16}>
+          <FadeIn delay={0.65}>
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8">
               {links.map((link) => (
                 <a

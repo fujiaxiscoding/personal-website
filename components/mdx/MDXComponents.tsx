@@ -4,7 +4,7 @@ import { ProcessStep } from "@/components/work/ProcessStep";
 export const mdxComponents = {
   h2: (props: ComponentProps<"h2">) => (
     <h2
-      className="mt-16 text-2xl font-medium tracking-tight text-ink first:mt-0"
+      className="mt-16 font-serif text-3xl tracking-tight text-ink first:mt-0"
       {...props}
     />
   ),
@@ -29,7 +29,7 @@ export const mdxComponents = {
   li: (props: ComponentProps<"li">) => <li {...props} />,
   blockquote: (props: ComponentProps<"blockquote">) => (
     <blockquote
-      className="mt-6 border-l-2 border-accent pl-5 text-lg italic text-ink"
+      className="mt-6 border-l-2 border-accent pl-5 font-serif text-xl italic text-ink"
       {...props}
     />
   ),
