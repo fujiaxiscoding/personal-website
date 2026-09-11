@@ -20,8 +20,8 @@ export function Magnetic({
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 300, damping: 20, mass: 0.5 });
-  const springY = useSpring(y, { stiffness: 300, damping: 20, mass: 0.5 });
+  const springX = useSpring(x, { stiffness: 700, damping: 38, mass: 0.2 });
+  const springY = useSpring(y, { stiffness: 700, damping: 38, mass: 0.2 });
 
   function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
     if (prefersReducedMotion) return;

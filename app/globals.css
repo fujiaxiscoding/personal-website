@@ -104,6 +104,24 @@ html.preloader-skip #loading-screen {
   }
 }
 
+/* Creative Collab case study — cream page takeover */
+html.creative-collab-page {
+  --canvas: #efe7da;
+  --canvas-muted: #f9f4ec;
+  --ink: #241d17;
+  --ink-muted: #8a7f70;
+  --line: rgba(140, 80, 40, 0.14);
+}
+
+html.creative-collab-page body {
+  background: #efe7da;
+}
+
+html.creative-collab-page .site-nav {
+  background: color-mix(in srgb, #efe7da 88%, transparent);
+  border-color: rgba(140, 80, 40, 0.12);
+}
+
 @media print {
   #loading-screen,
   .route-curtain,

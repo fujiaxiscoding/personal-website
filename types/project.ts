@@ -10,8 +10,10 @@ export type Project = {
   tags: string[];
   category?: string;
   medium?: string;
-  template?: "case-study" | "art";
+  template?: "case-study" | "art" | "cinematic";
   coverImage?: string;
   coverAlt?: string;
   featured?: boolean;
+  /** Lower comes first in Work listings. */
+  order?: number;
 };

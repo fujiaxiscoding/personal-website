@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&amp;family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f5ede0; }
+  a { color: #e2683f; }
+  a:hover { color: #b5533a; }
+  ::selection { background: #e2683f; color: #f5ede0; }
+</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif; background:#f5ede0; color:#1c1610; overflow-x:hidden;">
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:40; display:flex; align-items:center; justify-content:space-between; padding:18px 40px; background:rgba(245,237,224,0.86); backdrop-filter:blur(10px); border-bottom:1px solid rgba(28,22,16,0.08);">
+    <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:16px; letter-spacing:-0.01em;">Creative Collab</span>
+    <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263;">Case study · Jiaxi Fu</span>
+  </div>
+
+  <!-- 01 HERO -->
+  <div style="padding:88px 40px 64px; max-width:1160px; margin:0 auto; text-align:center;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:20px;">Product design case study</div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:clamp(12px,2vw,26px); margin:0 0 22px;">
+      <svg style="width:clamp(40px,7.5vw,92px); height:clamp(40px,7.5vw,92px); display:block; border-radius:22%; overflow:hidden; flex-shrink:0;" viewBox="0 0 100 100">
+        <defs><mask id="heroMark"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black"></path></mask></defs>
+        <rect width="100" height="100" fill="#e2683f" mask="url(#heroMark)"></rect>
+      </svg>
+      <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(48px,9vw,108px); line-height:0.96; letter-spacing:-0.02em; color:#1c1610; display:inline-flex;">
+        <span style="display:inline-block; transform:translateY(0px);">C</span><span style="display:inline-block; transform:translateY(-4.41px);">r</span><span style="display:inline-block; transform:translateY(3.3px);">e</span><span style="display:inline-block; transform:translateY(-2.19px);">a</span><span style="display:inline-block; transform:translateY(4.41px);">t</span><span style="display:inline-block; transform:translateY(-3.3px);">i</span><span style="display:inline-block; transform:translateY(2.19px);">v</span><span style="display:inline-block; transform:translateY(1.11px);">e</span><span style="display:inline-block; transform:translateY(-4.41px); color:#e2683f;">C</span><span style="display:inline-block; transform:translateY(2.19px);">o</span><span style="display:inline-block; transform:translateY(-3.3px);">l</span><span style="display:inline-block; transform:translateY(4.41px);">l</span><span style="display:inline-block; transform:translateY(-1.11px);">a</span><span style="display:inline-block; transform:translateY(2.19px);">b</span>
+      </span>
+    </div>
+    <p style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(17px,2vw,21px); line-height:1.5; color:#4a3f32; max-width:56ch; margin:0 auto 28px;">A collaboration–starting platform for independent creatives, launching first in New York City.</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:22px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#7d7263;">
+      <span>Role — Solo product design &amp; research</span>
+      <span>Stage — Concept to interactive prototype</span>
+      <span>Market — New York City launch</span>
+    </div>
+  </div>
+
+  <!-- hero product stage -->
+  <div style="position:relative; padding:24px 24px 100px; display:flex; justify-content:center; background:radial-gradient(ellipse 70% 60% at 50% 20%, rgba(226,104,63,0.12), transparent 70%);">
+    <div style="width:438px; height:836px; max-width:92vw; overflow:hidden; border-radius:54px; background:#0b0907; box-shadow:0 60px 120px -40px rgba(28,22,16,0.35), 0 0 0 1px rgba(28,22,16,0.06);">
+      <iframe onLoad="{{ onHeroFrameLoad }}" src="creative%20collabPrototype%20newest.dc.html" loading="lazy" title="Creative Collab interactive prototype" style="width:1300px; height:950px; border:0; position:relative; left:-574px; top:-57px; display:block; background:#0b0907;"></iframe>
+    </div>
+    <div style="position:absolute; bottom:56px; left:50%; transform:translateX(-50%); font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; text-align:center;">↑ Tap around — this is the real interactive prototype</div>
+  </div>
+
+  <!-- 02 IMAGINE THIS -->
+  <div style="max-width:1240px; margin:0 auto; padding:100px 40px; display:grid; grid-template-columns:200px minmax(0,1fr) 240px; gap:36px; align-items:center;">
+    <img src="assets/filmmaker-girl.png" alt="A filmmaker with an idea, wondering where to find collaborators" style="width:100%; height:auto; justify-self:center; align-self:end;">
+    <div style="text-align:center;">
+      <div style="font-family: 'IBM Plex Mono',monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #E2683F; margin-bottom: 26px">Imagine this</div>
+      <p style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(19px,2.4vw,27px); line-height:1.5; color:#241d17; margin:0 0 24px;">You’re a filmmaker with an idea you can already see.&nbsp; A world begin to take shape in your mind.</p>
+      <p style="font-family: 'Space Grotesk',sans-serif; font-weight: 500; font-size: clamp(19px,2.4vw,27px); line-height: 1.5; margin: 0 0 24px; color: #241D17">You don’t need a job. You need the right people: a cinematographer who understands the light, a producer who wants to make it real, someone whose practice makes the idea become more than yours alone.</p>
+      <p style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(21px,2.8vw,29px); line-height:1.4; color:#1c1610; margin:0;">But where do you begin looking?</p>
+    </div>
+    <img src="assets/filmmaker-crew.png" alt="A film crew wondering where to find each other" style="width:100%; height:auto; justify-self:center;">
+  </div>
+
+  <!-- 03 THE PROBLEM -->
+  <div style="padding:80px 40px 100px; max-width:1160px; margin:0 auto;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:16px; text-align:center;">The problem</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(28px,4vw,42px); line-height:1.15; letter-spacing:-0.01em; margin:0 0 56px; text-align:center; max-width:38ch; margin-left:auto; margin-right:auto;">How independent creatives look for people to make things with, today</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; margin-bottom:48px;">
+
+      <div style="background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:20px; padding:28px 24px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><circle cx="8" cy="8" r="3.2"></circle><circle cx="17" cy="9.5" r="2.4"></circle><path d="M2.5 20c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6"></path><path d="M15 15c2.4 0 4.5 1.8 4.5 5"></path></svg>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; margin:18px 0 8px;">Friends</div>
+        <div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">You ask people you already know — but the right person is usually outside your circle, and one network can only stretch so far.</div>
+      </div>
+
+      <div style="background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:20px; padding:28px 24px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><circle cx="12" cy="12" r="3.4"></circle><circle cx="17.3" cy="8" r="0.8" fill="#e2683f"></circle></svg>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; margin:18px 0 8px;">Social media</div>
+        <div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">You post a story on Instagram or 小红书 — but these are stages for presenting finished work, so openly asking for collaborators feels like exposure, not invitation.</div>
+      </div>
+
+      <div style="background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:20px; padding:28px 24px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"></path><path d="M3 12.5h18"></path></svg>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; margin:18px 0 8px;">Job platforms</div>
+        <div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">You try LinkedIn or Upwork — but those serve full-time careers and paid marketplaces, while a passion project starts from shared interest, not employment.</div>
+      </div>
+
+      <div style="background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:20px; padding:28px 24px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><circle cx="5" cy="6" r="2.2"></circle><circle cx="19" cy="6" r="2.2"></circle><circle cx="12" cy="18" r="2.2"></circle><path d="M6.6 7.6L10.5 16M17.4 7.6L13.5 16M7.2 6h9.6"></path></svg>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; margin:18px 0 8px;">Collab platforms</div>
+        <div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">You join a network like CoCreatea — but it connects strangers who share no city and no chance to meet, which makes real trust nearly impossible.</div>
+      </div>
+
+    </div>
+
+    <p style="font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(18px,2.2vw,23px); line-height:1.45; text-align:center; max-width:46ch; margin:0 auto; color:#1c1610;">Each path fails for its own reason — and together, they explain why so many projects never leave the idea stage.</p>
+  </div>
+
+  <!-- 04 TRUST GAP -->
+  <div style="display:grid; grid-template-columns:1fr 1fr;">
+    <div style="background:#17120e; color:#f5ede0; padding:80px 48px; display:flex; flex-direction:column; justify-content:center; min-height:440px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#f0a483; margin-bottom:20px;">The creator</div>
+      <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(32px,5vw,52px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 24px;">“Is this the right person?”</h3>
+      <p style="font-size:14px; line-height:1.6; color:#c3b6a6; max-width:34ch; margin:0;">Maya can see the whole film. She just can’t find people to make it real without begging her group chat — and everyone outside it is a stranger she has no way to vet.</p>
+    </div>
+    <div style="background:#f5ede0; color:#1c1610; padding:80px 48px; display:flex; flex-direction:column; justify-content:center; min-height:440px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#b5533a; margin-bottom:20px;">The collaborator</div>
+      <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(32px,5vw,52px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 24px;">“Am I welcome to join?”</h3>
+      <p style="font-size:14px; line-height:1.6; color:#5a4f41; max-width:34ch; margin:0;">Theo scrolls past projects he’d love to score every day, but never reaches out — a cold message to a stranger always feels like he’s imposing.</p>
+    </div>
+  </div>
+
+  <!-- 05 KEY INSIGHT -->
+  <div style="background:#17120e; color:#f5ede0; padding:130px 40px; text-align:center; border-top:1px solid rgba(245,237,224,0.14);">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:30px;">Key insight</div>
+    <p style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(32px,6vw,64px); line-height:1.12; letter-spacing:-0.02em; max-width:16ch; margin:0 auto;">No platform today is designed for the moment a collaboration begins.</p>
+  </div>
+
+  <!-- 06 PRODUCT THESIS -->
+  <div style="padding:100px 40px; max-width:900px; margin:0 auto; text-align:center;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:26px;">Product thesis</div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:36px;">
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; padding:8px 16px; border-radius:100px; border:1px solid rgba(226,104,63,0.4); color:#b5533a;">Creative intent</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; padding:8px 16px; border-radius:100px; border:1px solid rgba(226,104,63,0.4); color:#b5533a;">Project context</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; padding:8px 16px; border-radius:100px; border:1px solid rgba(226,104,63,0.4); color:#b5533a;">Mutual interest</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; padding:8px 16px; border-radius:100px; border:1px solid rgba(226,104,63,0.4); color:#b5533a;">Trust</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; padding:8px 16px; border-radius:100px; border:1px solid rgba(226,104,63,0.4); color:#b5533a;">Proximity</span>
+    </div>
+    <p style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(22px,3vw,30px); line-height:1.45; margin:0 0 40px; color:#1c1610;">Creative Collab is a collaboration–starting platform for independent creatives — giving an idea one clear place to gather the right people and become a real project.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px; text-align:left; border-top:1px solid rgba(28,22,16,0.1); padding-top:32px;">
+      <div>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6" style="margin-bottom:10px;"><circle cx="8" cy="8" r="3.2"></circle><circle cx="17" cy="9.5" r="2.4"></circle><path d="M2.5 20c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6"></path><path d="M15 15c2.4 0 4.5 1.8 4.5 5"></path></svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:8px;">Who it serves</div>
+        <div style="font-size:14px; line-height:1.55; color:#4a3f32;">Independent creatives across film, fashion, photography, food, publishing, performance and art.</div>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6" style="margin-bottom:10px;"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M7 10h10M7 14h6"></path></svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:8px;">What it does</div>
+        <div style="font-size:14px; line-height:1.55; color:#4a3f32;">Post a project, define open roles, and let people express interest without a cold message.</div>
+      </div>
+      <div>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6" style="margin-bottom:10px;"><path d="M12 3v6"></path><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path><circle cx="12" cy="6" r="3"></circle></svg>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:8px;">Why it stands apart</div>
+        <div style="font-size:14px; line-height:1.55; color:#4a3f32;">It owns the moment before a team exists — the exact moment social, portfolio and hiring tools all skip.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 PRODUCT LOOP -->
+  <div style="padding:100px 40px 40px; max-width:1160px; margin:0 auto;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:16px; text-align:center;">The product loop</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(28px,4vw,42px); line-height:1.2; letter-spacing:-0.01em; margin:0 0 20px; text-align:center; max-width:32ch; margin-left:auto; margin-right:auto;">One continuous journey, with a single pause</h2>
+    <p style="font-size:15px; line-height:1.6; color:#4a3f32; max-width:56ch; margin:0 auto 56px; text-align:center;">Anyone can browse projects and people with no account. The only moment sign-up appears is when someone is ready to reach out — every other screen stays open.</p>
+  </div>
+
+  <div style="max-width:1160px; margin:0 auto; padding:0 24px 110px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:36px 24px;">
+      <sc-for list="{{ screenDefs }}" as="scr" hint-placeholder-count="10">
+        <div>
+          <div style="width:100%; aspect-ratio:414/836; overflow:hidden; border-radius:28px; box-shadow:0 30px 60px -30px rgba(28,22,16,0.3), 0 0 0 1px rgba(28,22,16,0.06); margin-bottom:14px; background:#0b0907;">
+            <div style="width:100%; height:100%; overflow:hidden; position:relative; background:#0b0907;">
+              <iframe onLoad="{{ scr.onLoad }}" src="creative%20collabPrototype%20newest.dc.html" title="{{ scr.label }}" style="width:1300px; height:950px; border:0; position:absolute; display:block; background:#0b0907;"></iframe>
+            </div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#e2683f; margin-bottom:4px;">{{ scr.n }} · {{ scr.who }}</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:16px; margin-bottom:6px; color:#1c1610;">{{ scr.label }}</div>
+          <div style="font-size:12.5px; line-height:1.5; color:#5a4f41;">{{ scr.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- 08 KEY DESIGN DECISIONS -->
+  <div style="background:#fbf6ec; padding:100px 40px;">
+    <div style="max-width:1160px; margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:16px; text-align:center;">Key design decisions</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(28px,4vw,42px); line-height:1.2; letter-spacing:-0.01em; margin:0 0 56px; text-align:center; max-width:30ch; margin-left:auto; margin-right:auto;">Why it’s designed this way</h2>
+
+      <div style="display:flex; flex-direction:column; gap:2px;">
+
+        <div style="display:grid; grid-template-columns:44px 1.1fr 1fr 1fr; gap:28px; padding:28px 0; border-top:1px solid rgba(28,22,16,0.1); align-items:start;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"></path><path d="M3 12.5h18"></path></svg>
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:19px; line-height:1.3;">Projects before profiles</div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Insight</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Strangers are hard to trust up front.</div></div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Behavior</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">You browse things being made, so interest attaches to the work itself, not to a stranger.</div></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:44px 1.1fr 1fr 1fr; gap:28px; padding:28px 0; border-top:1px solid rgba(28,22,16,0.1); align-items:start;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><path d="M12 2l2.6 6.5 6.9.5-5.4 4.4 1.9 6.7L12 16.5l-5.9 3.6 1.9-6.7-5.4-4.4 6.9-.5z"></path></svg>
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:19px; line-height:1.3;">Commitment is visible</div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Insight</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Nobody wants to guess what saying yes would mean.</div></div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Behavior</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Role, timeline and stage appear up front on every project.</div></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:44px 1.1fr 1fr 1fr; gap:28px; padding:28px 0; border-top:1px solid rgba(28,22,16,0.1); align-items:start;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><path d="M4 18l6-11 4 7 3-4 3 8"></path><circle cx="10" cy="7" r="1.2" fill="#e2683f" stroke="none"></circle></svg>
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:19px; line-height:1.3;">Interest starts as a response</div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Insight</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">A cold message feels like too much to send.</div></div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Behavior</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">The creator reads why you connected before any credentials — borrowed from how Hinge opens.</div></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:44px 1.1fr 1fr 1fr; gap:28px; padding:28px 0; border-top:1px solid rgba(28,22,16,0.1); align-items:start;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 21c0-4.1 3.4-7.5 7.5-7.5s7.5 3.4 7.5 7.5"></path></svg>
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:19px; line-height:1.3;">Creative identity creates trust</div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Insight</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Strangers share no network to vouch for them.</div></div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Behavior</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Taste, references and past work stand in for the vouching a shared network would give.</div></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:44px 1.1fr 1fr 1fr; gap:28px; padding:28px 0; border-top:1px solid rgba(28,22,16,0.1); border-bottom:1px solid rgba(28,22,16,0.1); align-items:start;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e2683f" stroke-width="1.6"><path d="M4 10l8-6 8 6v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"></path></svg>
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:19px; line-height:1.3;">Signup happens at the moment of intent</div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Insight</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">A wall at the door stops casual explorers from ever getting curious.</div></div>
+          <div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263; margin-bottom:6px;">Behavior</div><div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Sign-up appears only when you express interest — setting up an account becomes part of reaching out.</div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ITERATION LOG -->
+  <div style="padding:100px 40px;">
+    <div style="max-width:1160px; margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:16px; text-align:center;">Iteration log</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(28px,4vw,42px); line-height:1.2; letter-spacing:-0.01em; margin:0 0 56px; text-align:center; max-width:26ch; margin-left:auto; margin-right:auto;">Two moments where the interface changed</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:48px;">
+
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:16px;">Brand identity</div>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
+            <div style="flex:1;">
+              <img src="assets/iter-before-brand.png" alt="Before: plain text header, no logo" style="width:100%; display:block; border-radius:12px; border:1px solid rgba(28,22,16,0.1);">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#b5533a; margin-top:8px;">Before</div>
+            </div>
+            <span style="font-size:20px; color:#7d7263; flex-shrink:0;">→</span>
+            <div style="flex:1;">
+              <img src="assets/iter-after-brand.png" alt="After: CreativeCollab logo lockup" style="width:100%; display:block; border-radius:12px; border:1px solid rgba(28,22,16,0.1);">
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#5bbf88; margin-top:8px;">After</div>
+            </div>
+          </div>
+          <p style="font-size:13.5px; line-height:1.6; color:#4a3f32; margin:0;">The early build was placeholder text, “In Progress.” Once the product had a name worth trusting, it needed a mark — the curtain-and-spark identity that now carries the brand everywhere.</p>
+        </div>
+
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:16px;">Card polish pass</div>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
+            <div style="flex:1;">
+              <div style="position:relative;">
+                <img src="assets/card-badge-before.png" alt="Before: tilted card, flat color cover, initials avatar, no Looking for label" style="width:100%; display:block; border-radius:12px; border:1px solid rgba(28,22,16,0.1);">
+                <span style="position:absolute; top:1%; left:50%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">1</span>
+                <span style="position:absolute; top:96%; left:8%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">2</span>
+                <span style="position:absolute; top:96.5%; left:17%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">3</span>
+                <span style="position:absolute; top:76.5%; left:50%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">4</span>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#b5533a; margin-top:8px;">Before</div>
+            </div>
+            <span style="font-size:20px; color:#7d7263; flex-shrink:0;">→</span>
+            <div style="flex:1;">
+              <div style="position:relative;">
+                <img src="assets/card-badge-after.png" alt="After: straightened card, real cover photo, photo avatar, Looking for label" style="width:100%; display:block; border-radius:12px; border:1px solid rgba(28,22,16,0.1);">
+                <span style="position:absolute; top:1%; left:50%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#5bbf88; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">1</span>
+                <span style="position:absolute; top:97%; left:8%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#5bbf88; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">2</span>
+                <span style="position:absolute; top:72.5%; left:18%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#5bbf88; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">3</span>
+                <span style="position:absolute; top:82.8%; left:50%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:#5bbf88; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">4</span>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#5bbf88; margin-top:8px;">After</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; gap:8px; align-items:baseline;"><span style="flex-shrink:0; width:18px; height:18px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center;">1</span><span style="font-size:12.5px; color:#4a3f32;">Card straightened — the whole frame and its badges sat at a slight, unintentional tilt</span></div>
+            <div style="display:flex; gap:8px; align-items:baseline;"><span style="flex-shrink:0; width:18px; height:18px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center;">2</span><span style="font-size:12.5px; color:#4a3f32;">Shadow softened — a heavier, harder-edged drop shadow replaced by a subtler one</span></div>
+            <div style="display:flex; gap:8px; align-items:baseline;"><span style="flex-shrink:0; width:18px; height:18px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center;">3</span><span style="font-size:12.5px; color:#4a3f32;">Host row moved up, right under the tagline, and the initials avatar swapped for a real photo</span></div>
+            <div style="display:flex; gap:8px; align-items:baseline;"><span style="flex-shrink:0; width:18px; height:18px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center;">4</span><span style="font-size:12.5px; color:#4a3f32;">Role chips now sit under an explicit “Looking for” label, in an outlined style instead of filled</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:64px; padding-top:48px; border-top:1px solid rgba(28,22,16,0.1);">
+        <div style="text-align:center; margin-bottom:28px;">
+          <a href="Iteration%20Log.dc.html" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#e2683f; text-decoration:none; padding:12px 22px; border:1px solid rgba(226,104,63,0.4); border-radius:100px;" style-hover="background:rgba(226,104,63,0.1);">See all 8 phases in the full Iteration Log →</a>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(90px,1fr)); gap:10px;">
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">01</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">Framing</div></div>
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">02</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">One journey</div></div>
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">03</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">Onboarding cut</div></div>
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">04</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">Contrast fix</div></div>
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">05</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">Desktop-first</div></div>
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">06</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">System v1→v2</div></div>
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">07</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">Hero flow</div></div>
+          <div style="text-align:center; background:#fbf6ec; border:1px solid rgba(28,22,16,0.08); border-radius:14px; padding:14px 8px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:600; color:#e2683f;">08</div><div style="font-size:11px; color:#5a4f41; margin-top:4px; line-height:1.3;">Craft passes</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 DESIGN SYSTEM -->
+  <div style="padding:100px 40px; max-width:1160px; margin:0 auto;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:16px; text-align:center;">The system behind the product</div>
+    <p style="font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(20px,2.6vw,26px); line-height:1.5; max-width:62ch; margin:0 auto 20px; text-align:center; color:#1c1610;">Creative Collab is designed to make collaboration feel like an invitation. Inspired by the social energy of platforms like Partiful and Luma, the system balances expressiveness with structure: playful enough to spark participation, but clear enough to support real creative commitments.</p>
+    <p style="font-size:14.5px; line-height:1.6; color:#5a4f41; max-width:58ch; margin:0 auto 64px; text-align:center;">Every interaction should move the user from “that looks interesting” to “I want to be part of this” with as little friction as possible.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; margin-bottom:64px;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; color:#e2683f; margin-bottom:8px;">01</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; margin-bottom:8px;">Participation over administration</div>
+        <div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Make joining and contributing feel lightweight. Reduce the feeling of forms, applications, and workflow management.</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; color:#e2683f; margin-bottom:8px;">02</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; margin-bottom:8px;">Energy creates participation</div>
+        <div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Use expressive typography, warm accents, and strong visual moments to make projects feel alive and worth entering.</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; color:#e2683f; margin-bottom:8px;">03</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; margin-bottom:8px;">Playful to enter. Serious enough to commit.</div>
+        <div style="font-size:13.5px; line-height:1.55; color:#5a4f41;">Keep discovery social and low-pressure, while making project details, roles, states, and commitments clear when decisions matter.</div>
+      </div>
+    </div>
+
+    <!-- system panel -->
+    <div style="background:#17120e; border-radius:24px; padding:40px; color:#f5ede0;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:28px; display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+        <span>From Design System v2</span>
+        <a href="Design%20System%20v2.dc.html" target="_blank" style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#e2683f; text-decoration:none; padding:8px 14px; border:1px solid rgba(226,104,63,0.4); border-radius:100px;" style-hover="background:rgba(226,104,63,0.12); border-color:#e2683f;">View the full system →</a>
+      </div>
+
+      <div style="display:grid; grid-template-columns:220px 1fr; gap:20px; margin-bottom:36px; padding-bottom:32px; border-bottom:1px solid rgba(245,237,224,0.1); align-items:start;">
+        <div style="background:#241c15; border:1px solid rgba(226,104,63,0.22); border-radius:20px; overflow:hidden; box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.16), 0 0 12px -2px rgba(0,0,0,0.42), 0 12px 26px -14px rgba(0,0,0,0.85);">
+          <div style="height:100px; background:linear-gradient(155deg,#5b8a76,#2f5a4c); position:relative;">
+            <span style="position:absolute; top:10px; left:10px; font-size:10px; font-weight:700; color:#8fe0b4; background:rgba(11,9,7,0.6); border:1px solid rgba(91,191,136,0.5); padding:3px 9px; border-radius:100px;">Open</span>
+          </div>
+          <div style="padding:14px;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:15px; margin-bottom:6px;">Experimental Dance Film</div>
+            <div style="display:flex; align-items:center; gap:6px; margin-bottom:9px;"><span style="width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,#e2683f,#eab54a);"></span><span style="font-size:11px; color:#c3b6a6;">Maya Rivera</span></div>
+            <div style="font-size:11px; color:#c3b6a6; margin-bottom:10px;">Looking for a <b style="color:#f5ede0;">sound designer</b></div>
+            <div style="text-align:center; padding:9px; border-radius:100px; background:#e2683f; color:#17120e; font-size:11.5px; font-weight:800;">Express interest</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:12px;">ProjectCard · anatomy</div>
+          <div style="font-size:12.5px; line-height:1.7; color:#c3b6a6;">
+            <div><b style="color:#e2683f;">01</b> Cover — visual context before a word is read</div>
+            <div><b style="color:#e2683f;">02</b> Title — two lines max, never truncated mid-word</div>
+            <div><b style="color:#e2683f;">03</b> Creator — the trust signal that replaces a cold DM</div>
+            <div><b style="color:#e2683f;">04</b> Looking for — whether there’s room for this reader</div>
+            <div><b style="color:#e2683f;">05</b> Action — one primary; the grid around it stays quiet</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:36px;">
+        <div><div style="height:52px; border-radius:12px; background:#e2683f;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; margin-top:8px;">primary</div></div>
+        <div><div style="height:52px; border-radius:12px; background:#eab54a;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; margin-top:8px;">secondary</div></div>
+        <div><div style="height:52px; border-radius:12px; background:#5bbf88;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; margin-top:8px;">accent</div></div>
+        <div><div style="height:52px; border-radius:12px; background:#241c15; border:1px solid rgba(226,104,63,0.22);"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; margin-top:8px;">card</div></div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px; padding-bottom:32px; border-bottom:1px solid rgba(245,237,224,0.1);">
+        <div style="display:flex; align-items:center; gap:8px; background:#17120e; border-radius:14px; padding:14px 18px;">
+          <svg width="24" height="24" viewBox="0 0 100 100" style="display:block; border-radius:6px; overflow:hidden; flex-shrink:0;"><defs><mask id="csmk"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black"></path></mask></defs><rect width="100" height="100" fill="#e2683f" mask="url(#csmk)"></rect></svg>
+          <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:16px; letter-spacing:-0.02em; color:#f5ede0; line-height:1; display:inline-flex; align-items:center;"><span style="display:inline-block; transform:translateY(0px);">C</span><span style="display:inline-block; transform:translateY(-1.1px);">r</span><span style="display:inline-block; transform:translateY(0.8px);">e</span><span style="display:inline-block; transform:translateY(-0.55px);">a</span><span style="display:inline-block; transform:translateY(1.1px);">t</span><span style="display:inline-block; transform:translateY(-0.8px);">i</span><span style="display:inline-block; transform:translateY(0.55px);">v</span><span style="display:inline-block; transform:translateY(0.28px);">e</span><span style="display:inline-block; transform:translateY(-1.1px); color:#e2683f;">C</span><span style="display:inline-block; transform:translateY(0.55px);">o</span><span style="display:inline-block; transform:translateY(-0.8px);">l</span><span style="display:inline-block; transform:translateY(1.1px);">l</span><span style="display:inline-block; transform:translateY(-0.28px);">a</span><span style="display:inline-block; transform:translateY(0.55px);">b</span></span>
+        </div>
+        <div style="font-size:16px; line-height:1.5; color:#e3d7c8; max-width:46ch;">The mark is <b style="color:#f5ede0;">a curtain opening</b> — two panels pulling apart to reveal <b style="color:#f5ede0;">a spark where they collide</b>. That collision is the whole idea: <b style="color:#f5ede0;">collaboration as two things meeting and making a third thing neither had alone.</b> Clearspace equals the tile’s corner radius on every side.</div>
+      </div>
+
+      <div style="margin-bottom:36px; padding-bottom:32px; border-bottom:1px solid rgba(245,237,224,0.1);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:16px;">Radius scale</div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <div style="text-align:center;"><div style="width:56px; height:56px; background:#1d1712; border:1px solid rgba(226,104,63,0.5); border-radius:10px;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">chip · 10</div></div>
+          <div style="text-align:center;"><div style="width:56px; height:56px; background:#1d1712; border:1px solid rgba(226,104,63,0.5); border-radius:16px;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">input · 16</div></div>
+          <div style="text-align:center;"><div style="width:56px; height:56px; background:#1d1712; border:1px solid rgba(226,104,63,0.5); border-radius:24px;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">card · 24</div></div>
+          <div style="text-align:center;"><div style="width:56px; height:56px; background:#1d1712; border:1px solid rgba(226,104,63,0.5); border-radius:26px;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">sheet · 26</div></div>
+          <div style="text-align:center;"><div style="width:56px; height:56px; background:#1d1712; border:1px solid rgba(226,104,63,0.5); border-radius:100px;"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">full · btn</div></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:36px; padding-bottom:32px; border-bottom:1px solid rgba(245,237,224,0.1);">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:16px;">Card elevation</div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <div style="text-align:center;"><div style="width:130px; height:64px; background:#241c15; border:1px solid rgba(226,104,63,0.22); border-radius:16px; box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.16), 0 0 12px -2px rgba(0,0,0,0.42), 0 12px 26px -14px rgba(0,0,0,0.85);"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">rest</div></div>
+          <div style="text-align:center;"><div style="width:130px; height:64px; background:#241c15; border:1px solid rgba(226,104,63,0.55); border-radius:16px; box-shadow:inset 0 1px 0 rgba(240,164,131,0.26), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.18), 0 18px 34px -14px rgba(0,0,0,0.9), 0 0 26px -10px rgba(226,104,63,0.3);"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">hover</div></div>
+          <div style="text-align:center;"><div style="width:130px; height:64px; background:#e2683f; border-radius:16px; box-shadow:0 24px 60px -20px rgba(226,104,63,0.55); transform:scale(0.97);"></div><div style="font-family:'IBM Plex Mono',monospace; font-size:10px; margin-top:8px; color:#9a8e7f;">pressed · 0.985</div></div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:32px;">
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:24px; margin-bottom:4px;">Bricolage Grotesque</div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:15px; color:#c3b6a6; margin-bottom:4px;">Space Grotesk — body text</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#c3b6a6;">IBM Plex Mono — labels &amp; data</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span style="padding:12px 22px; border-radius:100px; background:#e2683f; color:#17120e; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:13.5px;">Primary</span>
+          <span style="padding:12px 22px; border-radius:100px; border:1px solid rgba(245,237,224,0.25); color:#f5ede0; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:13.5px;">Secondary</span>
+          <span style="padding:12px 4px; color:#c3b6a6; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:13.5px;">Ghost</span>
+        </div>
+      </div>
+
+      <div style="font-size:13px; line-height:1.6; color:#9a8e7f; border-top:1px solid rgba(245,237,224,0.1); padding-top:20px;">
+        <b style="color:#f5ede0;">Motion —</b> cards never transform on hover, only shadow and border shift. Pressing scales any surface to 0.985. Nothing bounces or overshoots.
+      </div>
+    </div>
+
+    <!-- component anatomy diagram -->
+    <div style="margin-top:56px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:24px; text-align:center;">Component anatomy · ProjectCard</div>
+      <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:36px;">
+        <div style="position:relative; width:260px;">
+          <div style="background:#241c15; border-radius:24px; overflow:hidden; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.16), 0 0 12px -2px rgba(0,0,0,0.42), 0 12px 26px -14px rgba(0,0,0,0.85);">
+            <div style="height:130px; background:linear-gradient(155deg,#5b8a76,#2f5a4c); position:relative; display:flex; align-items:flex-start; justify-content:space-between; padding:14px;">
+              <span style="position:relative; background:rgba(11,9,7,0.35); font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:6px 12px; border-radius:100px; color:#f5ede0;">Film<span style="position:absolute; top:-10px; left:-10px; width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">1</span></span>
+              <span style="position:relative; background:#eab54a; color:#17120e; font-size:11px; font-weight:700; padding:6px 11px; border-radius:100px;">Pre-production<span style="position:absolute; top:-10px; right:-10px; width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">2</span></span>
+            </div>
+            <div style="padding:16px 18px 18px;">
+              <div style="position:relative; margin-bottom:6px; padding-right:26px;"><h3 style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; line-height:1.02; color:#f5ede0;">Experimental Dance Film</h3><span style="position:absolute; top:-2px; right:-2px; width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">3</span></div>
+              <div style="position:relative; padding-right:26px;"><p style="margin:0; font-size:12.5px; line-height:1.4; color:#c3b6a6;">Exploring memory through movement and abandoned architecture.</p><span style="position:absolute; top:-4px; right:-2px; width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">4</span></div>
+              <div style="position:relative; display:flex; align-items:center; gap:8px; margin-top:13px; padding-right:26px;">
+                <span style="width:20px; height:20px; border-radius:50%; background:linear-gradient(135deg,#e2683f,#eab54a); font-size:9px; font-weight:700; color:#17120e; display:flex; align-items:center; justify-content:center;">MR</span>
+                <span style="font-size:11.5px; color:#9a8e7f;">Maya R.</span>
+                <span style="position:absolute; top:-4px; right:-2px; width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">5</span>
+              </div>
+              <div style="position:relative; margin-top:11px; padding-top:11px; border-top:1px solid rgba(245,237,224,0.07); padding-right:26px;">
+                <div style="font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:7px;">Looking for</div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <span style="font-size:10.5px; font-weight:600; padding:4px 10px; border-radius:100px; background:#2e251c; border:1px solid rgba(245,237,224,0.12); color:#e3d7c8;">Sound Designer</span>
+                  <span style="font-size:10.5px; font-weight:600; padding:4px 10px; border-radius:100px; background:#2e251c; border:1px solid rgba(245,237,224,0.12); color:#e3d7c8;">Editor</span>
+                </div>
+                <span style="position:absolute; top:-3px; right:-2px; width:20px; height:20px; border-radius:50%; background:#e2683f; color:#17120e; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; justify-content:center; max-width:320px;">
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="flex-shrink:0; width:22px; height:22px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">1</span><span style="font-size:13px; color:#4a3f32;"><b>Category</b> — sits on the cover, low-opacity so it never fights the image</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="flex-shrink:0; width:22px; height:22px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">2</span><span style="font-size:13px; color:#4a3f32;"><b>Stage</b> — where the project actually is right now, not just “open”</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="flex-shrink:0; width:22px; height:22px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">3</span><span style="font-size:13px; color:#4a3f32;"><b>Title</b> — two lines max, never truncated mid-word</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="flex-shrink:0; width:22px; height:22px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">4</span><span style="font-size:13px; color:#4a3f32;"><b>Tagline</b> — one line, the idea in plain words</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="flex-shrink:0; width:22px; height:22px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">5</span><span style="font-size:13px; color:#4a3f32;"><b>Host</b> — the trust signal that replaces a cold DM</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="flex-shrink:0; width:22px; height:22px; border-radius:50%; background:#e2683f; color:#f5ede0; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">6</span><span style="font-size:13px; color:#4a3f32;"><b>Looking for</b> — open roles, so you know before you tap in whether there’s room</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WCAG contrast audit -->
+    <div style="margin-top:64px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:8px; text-align:center;">WCAG contrast audit</div>
+      <p style="font-size:12.5px; line-height:1.55; color:#9a8e7f; max-width:520px; margin:0 auto 24px; text-align:center;">A pass against WCAG 1.4.11 (non-text contrast) — card borders and status chips sitting on mid-tone fills, needing 3:1 against what's next to them.</p>
+      <div style="max-width:640px; margin:0 auto; border:1px solid rgba(28,22,16,0.1); border-radius:16px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; background:#fbf6ec; padding:12px 18px; font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#7d7263;">
+          <div>Element</div><div>Before</div><div>Status</div><div>After · C1</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; padding:14px 18px; align-items:center; border-top:1px solid rgba(28,22,16,0.08); font-size:13px;">
+          <div>Card border on mid-tone fill</div>
+          <div style="display:flex; align-items:center; gap:8px; color:#5a4f41;"><span style="width:34px; height:22px; border-radius:6px; background:#3a3128; border:1px solid rgba(226,104,63,0.18);"></span>1.6:1</div>
+          <div style="color:#c0392b; font-weight:600;">Fail</div>
+          <div style="display:flex; align-items:center; gap:8px; color:#1c8a4c; font-weight:600;"><span style="width:34px; height:22px; border-radius:6px; background:#241c15; border:1px solid rgba(226,104,63,0.55);"></span>3.4:1</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; padding:14px 18px; align-items:center; border-top:1px solid rgba(28,22,16,0.08); font-size:13px;">
+          <div>Status chip edge</div>
+          <div style="display:flex; align-items:center; gap:8px; color:#5a4f41;"><span style="width:34px; height:22px; border-radius:100px; background:#4a4238;"></span>1.3:1</div>
+          <div style="color:#c0392b; font-weight:600;">Fail</div>
+          <div style="display:flex; align-items:center; gap:8px; color:#1c8a4c; font-weight:600;"><span style="width:34px; height:22px; border-radius:100px; background:#17120e; border:1px solid #5bbf88;"></span>3.1:1</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; padding:14px 18px; align-items:center; border-top:1px solid rgba(28,22,16,0.08); font-size:13px;">
+          <div>Focus ring</div>
+          <div style="display:flex; align-items:center; gap:8px; color:#5a4f41;"><span style="width:22px; height:22px; border-radius:6px; background:transparent; border:2px solid #4a90e2;"></span>Browser blue</div>
+          <div style="color:#b5883a; font-weight:600;">Off-brand</div>
+          <div style="display:flex; align-items:center; gap:8px; color:#1c8a4c; font-weight:600;"><span style="width:22px; height:22px; border-radius:6px; background:transparent; border:2px solid #e2683f;"></span>Coral, 3.4:1</div>
+        </div>
+      </div>
+      <p style="font-size:12.5px; line-height:1.55; color:#7d7263; max-width:560px; margin:16px auto 0; text-align:center;">Fix: the C1 treatment — coral edge on a near-black fill instead of coral on mid-tone. It kept the warm editorial character while getting every border and chip past 3:1.</p>
+    </div>
+  </div>
+
+  <!-- 10 MVP -->
+  <div style="background:#fbf6ec; padding:100px 40px;">
+    <div style="max-width:1160px; margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#e2683f; margin-bottom:16px; text-align:center;">Where the build stands</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(28px,4vw,42px); line-height:1.2; letter-spacing:-0.01em; margin:0 0 56px; text-align:center; max-width:28ch; margin-left:auto; margin-right:auto;">The smallest loop that proves the idea</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin-bottom:48px;">
+        <div style="background:#f5ede0; border:1.5px solid #e2683f; border-radius:20px; padding:28px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#b5533a; margin-bottom:14px;">In the prototype</div>
+          <div style="font-size:14px; line-height:1.9; color:#241d17;">1. Browse projects<br>2. Open a project<br>3. Express interest<br>4. Creative identity<br>5. Creator reviews<br>6. Conversation starts</div>
+          <div style="height:1px; background:rgba(28,22,16,0.1); margin:16px 0;"></div>
+          <div style="font-size:14px; line-height:1.9; color:#4a3f32;">Category filters<br>Saved projects<br>Create-project flow<br>Publishing<br>Full onboarding into Creative Identity</div>
+        </div>
+        <div style="background:#f5ede0; border:1px solid rgba(28,22,16,0.1); border-radius:20px; padding:28px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; margin-bottom:14px;">Still to build</div>
+          <div style="font-size:14px; line-height:1.9; color:#4a3f32;">Working chat backend<br>Notifications<br>Safety &amp; reporting<br>Suggested matches<br>Paid features after launch</div>
+        </div>
+      </div>
+
+      <p style="font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(17px,2vw,20px); line-height:1.5; text-align:center; max-width:52ch; margin:0 auto; color:#1c1610;">Core value — a creative idea can find the right collaborator and move into action.</p>
+    </div>
+  </div>
+
+  <!-- 11 ENDING -->
+  <div style="padding:150px 40px 120px; text-align:center;">
+    <p style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(30px,5.5vw,58px); line-height:1.15; letter-spacing:-0.02em; max-width:20ch; margin:0 auto 48px;">A creative idea finds the right person, and moves into action.</p>
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#7d7263;">Creative Collab · Case study by Jiaxi Fu</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  onHeroFrameLoad(e) {
+    const frame = e.target;
+    let tries = 0;
+    const paintEmbedBg = (doc) => {
+      try {
+        if (!doc) return;
+        const root = doc.body && doc.body.querySelector('div');
+        if (root) root.style.background = '#0b0907';
+        if (doc.body) doc.body.style.background = '#0b0907';
+        if (doc.documentElement) doc.documentElement.style.background = '#0b0907';
+      } catch (err) {}
+    };
+    const measure = () => {
+      tries++;
+      try {
+        const doc = frame.contentDocument;
+        paintEmbedBg(doc);
+        const phone = doc && [...doc.querySelectorAll('div')].find(d => doc.defaultView.getComputedStyle(d).borderRadius === '54px');
+        if (phone) {
+          const rect = phone.getBoundingClientRect();
+          if (rect.width > 100 && rect.height > 100) {
+            const wrapper = frame.parentElement;
+            wrapper.style.width = Math.round(rect.width) + 'px';
+            wrapper.style.height = Math.round(rect.height) + 'px';
+            wrapper.style.background = '#0b0907';
+            frame.style.left = (-Math.round(rect.left)) + 'px';
+            frame.style.top = (-Math.round(rect.top)) + 'px';
+            frame.style.background = '#0b0907';
+          }
+        }
+      } catch (err) {}
+      if (tries < 24) setTimeout(measure, 200);
+    };
+    measure();
+  }
+  onScreenFrameLoad(e, stepIndex) {
+    const frame = e.target;
+    const container = frame.parentElement;
+    const shell = container && container.parentElement;
+    const findPhone = (doc) => doc && [...doc.querySelectorAll('div')].find(d => doc.defaultView.getComputedStyle(d).borderRadius === '54px');
+    const paintEmbedBg = (doc) => {
+      try {
+        if (!doc) return;
+        const root = doc.body && doc.body.querySelector('div');
+        if (root) root.style.background = '#0b0907';
+        if (doc.body) doc.body.style.background = '#0b0907';
+        if (doc.documentElement) doc.documentElement.style.background = '#0b0907';
+      } catch (err) {}
+    };
+    const apply = () => {
+      try {
+        const doc = frame.contentDocument;
+        paintEmbedBg(doc);
+        const phone = findPhone(doc);
+        if (!phone || container.clientWidth <= 0) return false;
+        const rect = phone.getBoundingClientRect();
+        if (rect.width < 100 || rect.height < 100) return false;
+        const scale = container.clientWidth / rect.width;
+        frame.style.transformOrigin = '0 0';
+        frame.style.transform = `scale(${scale})`;
+        frame.style.left = (-rect.left * scale) + 'px';
+        frame.style.top = (-rect.top * scale) + 'px';
+        frame.style.background = '#0b0907';
+        container.style.background = '#0b0907';
+        if (shell) shell.style.background = '#0b0907';
+        return true;
+      } catch (err) { return false; }
+    };
+    const clickRailStep = () => {
+      try {
+        const doc = frame.contentDocument;
+        const label = String(stepIndex).padStart(2, '0');
+        const spans = doc.querySelectorAll('span');
+        for (const sp of spans) {
+          if (sp.textContent.trim() === label && sp.parentElement) {
+            sp.parentElement.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+            return true;
+          }
+        }
+      } catch (err) {}
+      return false;
+    };
+    let tries = 0;
+    const waitForPhone = () => {
+      tries++;
+      if (apply() || tries >= 30) {
+        let clickTries = 0;
+        const waitForRail = () => {
+          clickTries++;
+          if (clickRailStep() || clickTries >= 20) {
+            setTimeout(apply, 400);
+            setTimeout(apply, 1000);
+            setTimeout(apply, 1800);
+            return;
+          }
+          setTimeout(waitForRail, 150);
+        };
+        waitForRail();
+        return;
+      }
+      setTimeout(waitForPhone, 200);
+    };
+    waitForPhone();
+  }
+  renderVals() {
+    const defs = [
+      [0, 'Launch', 'App open', 'The mark animates in, then hands off straight to Home \u2014 no splash copy, no sign-in wall.'],
+      [1, 'Home', 'Collaborator', 'Category chips filter the feed; each card opens Project Detail. Browsing needs no account.'],
+      [2, 'Project Detail', 'Collaborator', 'Cover, vision, open roles and host sit together so saying yes is an informed decision, not a guess.'],
+      [3, 'Creative Identity', 'Guest \u2192 Member', 'Signing up only appears here, folded into the act of reaching out \u2014 not a wall before browsing.'],
+      [4, 'Express Interest', 'Collaborator', 'A short note on why you connected, read before any credentials \u2014 replacing the cold DM.'],
+      [5, 'Interested Creators', 'Creator', 'The host reviews notes as a queue, not a job-app inbox \u2014 sorted by role and availability.'],
+      [6, 'Creator Profile', 'Creator', 'Taste, references and past work stand in for the network a stranger would otherwise lack.'],
+      [7, 'Welcome', 'Together', 'A confirmation screen with a clear next step: the two of you now have a shared space.'],
+      [8, 'Chat', 'Together', 'Contact info was never collected earlier \u2014 the conversation itself is where it\u2019s exchanged.'],
+      [9, 'Start a Creation', 'Host', 'Five lean steps \u2014 only title and image are required; timing, roles and location stay optional.']
+    ];
+    const screenDefs = defs.map(([n, label, who, desc]) => ({
+      key: n, n: String(n).padStart(2, '0'), label, who, desc,
+      onLoad: (e) => this.onScreenFrameLoad(e, n)
+    }));
+    return {
+      onHeroFrameLoad: (e) => this.onHeroFrameLoad(e),
+      screenDefs
+    };
+  }
+}
+</script>
+</body>
+</html>

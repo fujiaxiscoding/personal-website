@@ -7,7 +7,12 @@ export function getAllProjects(): Project[] {
       const { frontmatter } = getProjectSource(slug);
       return { slug, ...frontmatter } as Project;
     })
-    .sort((a, b) => Number(b.year) - Number(a.year));
+    .sort((a, b) => {
+      const orderA = a.order ?? Number.MAX_SAFE_INTEGER;
+      const orderB = b.order ?? Number.MAX_SAFE_INTEGER;
+      if (orderA !== orderB) return orderA - orderB;
+      return Number(b.year) - Number(a.year);
+    });
 }
 
 export function getFeaturedProjects(): Project[] {

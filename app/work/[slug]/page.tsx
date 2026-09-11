@@ -16,7 +16,9 @@ import { siteConfig } from "@/lib/site-config";
 type Params = { slug: string };
 
 export function generateStaticParams() {
-  return getAllProjects().map((project) => ({ slug: project.slug }));
+  return getAllProjects()
+    .filter((project) => project.slug !== "creative-collab")
+    .map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({

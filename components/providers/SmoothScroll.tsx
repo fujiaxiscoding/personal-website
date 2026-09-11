@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 
 /**
- * Wraps native scroll with subtle inertia for a more considered, cinematic
- * feel. Disabled entirely under prefers-reduced-motion so the browser's
- * native (and instant) scroll behavior is preserved for anyone who needs it.
+ * Light inertia over native scroll. Kept intentionally snappy so wheel input
+ * still feels immediate — cinematic polish without the laggy “catch-up” feel.
+ * Disabled under prefers-reduced-motion.
  */
 export function SmoothScroll() {
   useEffect(() => {
@@ -16,9 +16,13 @@ export function SmoothScroll() {
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
+      // Higher lerp = closer to native. 0.12–0.2 is smooth but responsive.
+      lerp: 0.18,
+      duration: 0.6,
       smoothWheel: true,
+      syncTouch: false,
+      wheelMultiplier: 1,
+      touchMultiplier: 1,
     });
 
     let frameId: number;

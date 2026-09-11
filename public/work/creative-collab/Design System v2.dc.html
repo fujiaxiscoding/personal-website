@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#17120e; }
+  ::-webkit-scrollbar { width:9px; }
+  ::-webkit-scrollbar-thumb { background:#3a2c1c; border-radius:100px; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .spinner { animation:spin 0.9s linear infinite; }
+  .mono { font-family:'IBM Plex Mono',monospace; }
+  .disp { font-family:'Bricolage Grotesque',sans-serif; }
+  .body { font-family:'Space Grotesk',sans-serif; }
+  .eyebrow { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#e2683f; margin-bottom:10px; }
+  .lbl { font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; }
+  .card { background:#241c15; border:1px solid rgba(226,104,63,0.22); border-radius:20px; box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.16), 0 0 12px -2px rgba(0,0,0,0.42), 0 12px 26px -14px rgba(0,0,0,0.85); }
+  .navlink { padding:7px 12px; border-radius:10px; font-size:12.5px; font-weight:600; color:#9a8e7f; cursor:pointer; text-decoration:none; }
+  a { color:#e2683f; }
+  a:hover { color:#f0a483; }
+  .code { font-family:'IBM Plex Mono',monospace; font-size:12px; line-height:1.75; background:#0f0b08; border:1px solid rgba(245,237,224,0.1); border-radius:12px; padding:14px 16px; color:#d8ccbc; white-space:pre; overflow-x:auto; }
+  .tok { color:#8fe0b4; }
+  .str { color:#f0c48a; }
+  .kw { color:#f0a483; }
+  .cm { color:#7d7263; }
+  .spec { font-size:12.5px; color:#c3b6a6; line-height:1.6; }
+  .swatchname { font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:#f5ede0; margin-top:8px; }
+  .swatchuse { font-family:'Space Grotesk',sans-serif; font-size:11.5px; color:#9a8e7f; line-height:1.45; margin-top:3px; }
+</style>
+</helmet>
+
+<div style="display:flex; font-family:'Space Grotesk',sans-serif; color:#f5ede0; background:#17120e; min-height:100vh;">
+
+  <div style="width:214px; flex-shrink:0; position:sticky; top:0; height:100vh; overflow-y:auto; padding:28px 14px; border-right:1px solid rgba(245,237,224,0.1); display:flex; flex-direction:column; gap:1px;">
+    <div class="disp" style="font-weight:800; font-size:17px;">CreativeCollab</div>
+    <div class="lbl" style="margin-bottom:20px;">Design System v2</div>
+
+    <div class="lbl" style="padding:0 12px; margin-bottom:5px; color:#e2683f;">00 Rationale</div>
+    <a href="#rationale" class="navlink">Product rationale</a>
+    <a href="#principles" class="navlink">Principles</a>
+
+    <div class="lbl" style="padding:0 12px; margin:16px 0 5px; color:#e2683f;">01 Foundations</div>
+    <a href="#brand" class="navlink">Brand &amp; logo</a>
+    <a href="#color" class="navlink">Color</a>
+    <a href="#type" class="navlink">Typography</a>
+    <a href="#space" class="navlink">Spacing</a>
+    <a href="#radius" class="navlink">Radius &amp; elevation</a>
+
+    <div class="lbl" style="padding:0 12px; margin:16px 0 5px; color:#e2683f;">02 Components</div>
+    <a href="#button" class="navlink">Button</a>
+    <a href="#input" class="navlink">Input / Textarea / Select</a>
+    <a href="#chips" class="navlink">Badge / Tag / Toggle</a>
+    <a href="#card" class="navlink">Card</a>
+    <a href="#misc" class="navlink">Avatar / Progress / Tabs</a>
+    <a href="#overlay" class="navlink">Dialog / Sheet / Toast</a>
+
+    <div class="lbl" style="padding:0 12px; margin:16px 0 5px; color:#e2683f;">03 States &amp; feedback</div>
+    <a href="#states" class="navlink">Interaction states</a>
+    <a href="#matrix" class="navlink">State matrix</a>
+    <a href="#feedback" class="navlink">Feedback states</a>
+    <a href="#motion" class="navlink">Motion</a>
+    <a href="#launch" class="navlink">Launch sequence</a>
+
+    <div class="lbl" style="padding:0 12px; margin:16px 0 5px; color:#e2683f;">04 Patterns</div>
+    <a href="#cards" class="navlink">Product cards</a>
+    <a href="#empty" class="navlink">Empty states</a>
+    <a href="#forms" class="navlink">Form validation</a>
+    <a href="#flow" class="navlink">Express interest</a>
+
+    <div class="lbl" style="padding:0 12px; margin:16px 0 5px; color:#e2683f;">05 Responsive &amp; a11y</div>
+    <a href="#responsive" class="navlink">Layout by breakpoint</a>
+    <a href="#a11y" class="navlink">Accessibility</a>
+
+    <div class="lbl" style="padding:0 12px; margin:16px 0 5px; color:#e2683f;">06 Implementation</div>
+    <a href="#implementation" class="navlink">Architecture</a>
+  </div>
+
+  <div style="flex:1; max-width:1160px; padding:64px 72px 140px;">
+
+    <div style="margin-bottom:64px;">
+      <div class="eyebrow">Design System · v2</div>
+      <h1 class="disp" style="font-weight:800; font-size:46px; line-height:0.98; margin:0 0 16px; letter-spacing:-0.01em;">Creative Collab Design System</h1>
+      <p class="body" style="margin:0 0 20px; font-size:16px; line-height:1.6; color:#c3b6a6; max-width:70ch;">The system gives a creative product enough structure to support clear decisions and collaboration without flattening its personality.</p>
+      <div class="spec" style="max-width:70ch;">Built as a semantic Tailwind theme on shadcn/ui primitives: one <span class="mono" style="font-size:12px; color:#f0a483;">variant × size × state</span> matrix per component, shared by design and engineering.</div>
+    </div>
+
+    <!-- ============ 00 RATIONALE ============ -->
+    <div style="display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid rgba(226,104,63,0.4); margin-bottom:36px;">
+      <span class="mono" style="font-size:13px; color:#e2683f;">00</span>
+      <h2 class="disp" style="font-size:32px; font-weight:800; margin:0;">Product rationale</h2>
+    </div>
+
+    <div id="rationale" style="max-width:74ch; margin-bottom:56px;">
+      <p class="disp" style="margin:0 0 18px; font-size:24px; line-height:1.3; font-weight:700; letter-spacing:-0.01em;">Creative Collab is designed to make collaboration feel like an invitation.</p>
+      <p class="body" style="margin:0; font-size:15px; line-height:1.7; color:#c3b6a6;">Inspired by the social energy of platforms like Partiful and Luma, the system balances expressiveness with structure: playful enough to spark participation, but clear enough to support real creative commitments. Every interaction should move the user from “that looks interesting” to “I want to be part of this” with as little friction as possible.</p>
+    </div>
+
+    <h3 id="principles" class="disp" style="font-size:21px; font-weight:700; margin:0 0 18px;">Principles</h3>
+
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:80px;">
+
+      <div class="card" style="padding:24px;">
+        <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+          <span class="mono" style="font-size:11px; color:#e2683f;">01</span>
+          <span class="disp" style="font-size:20px; font-weight:700;">Participation over administration</span>
+        </div>
+        <div style="font-size:13.5px; color:#c3b6a6; line-height:1.7; max-width:74ch;">Make joining and contributing feel lightweight. Reduce the feeling of forms, applications, and workflow management.</div>
+      </div>
+
+      <div class="card" style="padding:24px;">
+        <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+          <span class="mono" style="font-size:11px; color:#e2683f;">02</span>
+          <span class="disp" style="font-size:20px; font-weight:700;">Energy creates participation</span>
+        </div>
+        <div style="font-size:13.5px; color:#c3b6a6; line-height:1.7; max-width:74ch;">Use expressive typography, warm accents, and strong visual moments to make projects feel alive and worth entering.</div>
+      </div>
+
+      <div class="card" style="padding:24px;">
+        <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+          <span class="mono" style="font-size:11px; color:#e2683f;">03</span>
+          <span class="disp" style="font-size:20px; font-weight:700;">Playful to enter. Serious enough to commit.</span>
+        </div>
+        <div style="font-size:13.5px; color:#c3b6a6; line-height:1.7; max-width:74ch;">Keep discovery social and low-pressure, while making project details, roles, states, and commitments clear when decisions matter.</div>
+      </div>
+    </div>
+
+    <!-- ============ 01 FOUNDATIONS ============ -->
+    <div style="display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid rgba(226,104,63,0.4); margin-bottom:36px;">
+      <span class="mono" style="font-size:13px; color:#e2683f;">01</span>
+      <h2 class="disp" style="font-size:32px; font-weight:800; margin:0;">Foundations</h2>
+    </div>
+
+    <h3 id="brand" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Brand &amp; logo</h3>
+    <div class="spec" style="margin-bottom:18px;">One mark, one wordmark, one lockup. The mark is a coral tile with the spark knocked out of it — the spark is never drawn as a positive shape.</div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:14px;">
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Mark · knockout tile</div>
+        <div style="display:flex; align-items:flex-end; gap:14px; margin-bottom:14px;">
+          <svg width="72" height="72" viewBox="0 0 100 100" style="display:block; border-radius:18px; overflow:hidden;">
+            <defs><mask id="dsmk72"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs>
+            <rect width="100" height="100" fill="#15100c"></rect>
+            <rect width="100" height="100" fill="#e2683f" mask="url(#dsmk72)"></rect>
+          </svg>
+          <svg width="44" height="44" viewBox="0 0 100 100" style="display:block; border-radius:11px; overflow:hidden;">
+            <defs><mask id="dsmk44"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs>
+            <rect width="100" height="100" fill="#15100c"></rect>
+            <rect width="100" height="100" fill="#e2683f" mask="url(#dsmk44)"></rect>
+          </svg>
+          <svg width="26" height="26" viewBox="0 0 100 100" style="display:block; border-radius:6px; overflow:hidden;">
+            <defs><mask id="dsmk26"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs>
+            <rect width="100" height="100" fill="#15100c"></rect>
+            <rect width="100" height="100" fill="#e2683f" mask="url(#dsmk26)"></rect>
+          </svg>
+        </div>
+        <div class="spec">Spark sits at 86% of the tile, optically centred. Tile radius tracks size: 26px at 116, 18px at 72, 11px at 44, 6px at 26. Never below 20px.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Wordmark · nudged baseline</div>
+        <div style="display:inline-flex; align-items:center; line-height:1; margin-bottom:14px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:22px; letter-spacing:-0.02em; color:#f5ede0;">
+          <span style="display:inline-block; transform:translateY(0px);">C</span><span style="display:inline-block; transform:translateY(-1.47px);">r</span><span style="display:inline-block; transform:translateY(1.1px);">e</span><span style="display:inline-block; transform:translateY(-0.73px);">a</span><span style="display:inline-block; transform:translateY(1.47px);">t</span><span style="display:inline-block; transform:translateY(-1.1px);">i</span><span style="display:inline-block; transform:translateY(0.73px);">v</span><span style="display:inline-block; transform:translateY(0.37px);">e</span><span style="display:inline-block; transform:translateY(-1.47px); color:#e2683f;">C</span><span style="display:inline-block; transform:translateY(0.73px);">o</span><span style="display:inline-block; transform:translateY(-1.1px);">l</span><span style="display:inline-block; transform:translateY(1.47px);">l</span><span style="display:inline-block; transform:translateY(-0.37px);">a</span><span style="display:inline-block; transform:translateY(0.73px);">b</span>
+        </div>
+        <div class="spec">Bricolage Grotesque 800, <span class="mono" style="font-size:11px; color:#f0a483;">-0.02em</span>. Per-letter vertical nudge of ±2px at 30px, scaled linearly with size. The second <b style="color:#f5ede0;">C</b> is <span class="mono" style="font-size:11px; color:#f0a483;">primary</span>; every other letter is <span class="mono" style="font-size:11px; color:#f0a483;">foreground</span>.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Lockup · horizontal</div>
+        <div style="display:flex; align-items:center; gap:8px; background:#17120e; border-radius:14px; padding:14px; margin-bottom:10px;">
+          <svg width="26" height="26" viewBox="0 0 100 100" style="display:block; border-radius:6px; overflow:hidden; flex-shrink:0;">
+            <defs><mask id="dsmkl"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs>
+            <rect width="100" height="100" fill="#15100c"></rect>
+            <rect width="100" height="100" fill="#e2683f" mask="url(#dsmkl)"></rect>
+          </svg>
+          <span style="display:inline-flex; align-items:center; line-height:1; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:17px; letter-spacing:-0.02em; color:#f5ede0;">
+            <span style="display:inline-block; transform:translateY(0px);">C</span><span style="display:inline-block; transform:translateY(-1.13px);">r</span><span style="display:inline-block; transform:translateY(0.85px);">e</span><span style="display:inline-block; transform:translateY(-0.57px);">a</span><span style="display:inline-block; transform:translateY(1.13px);">t</span><span style="display:inline-block; transform:translateY(-0.85px);">i</span><span style="display:inline-block; transform:translateY(0.57px);">v</span><span style="display:inline-block; transform:translateY(0.28px);">e</span><span style="display:inline-block; transform:translateY(-1.13px); color:#e2683f;">C</span><span style="display:inline-block; transform:translateY(0.57px);">o</span><span style="display:inline-block; transform:translateY(-0.85px);">l</span><span style="display:inline-block; transform:translateY(1.13px);">l</span><span style="display:inline-block; transform:translateY(-0.28px);">a</span><span style="display:inline-block; transform:translateY(0.57px);">b</span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:7px; background:#e2683f; border-radius:14px; padding:14px; color:#17120e;">
+          <svg width="20" height="20" viewBox="0 0 100 100" style="display:block; border-radius:5px; overflow:hidden; flex-shrink:0;">
+            <defs><mask id="dsmkc"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs>
+            <rect width="100" height="100" fill="#e2683f"></rect>
+            <rect width="100" height="100" fill="#17120e" mask="url(#dsmkc)"></rect>
+          </svg>
+          <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:13px; letter-spacing:-0.01em;">CreativeCollab</span>
+        </div>
+        <div class="spec" style="margin-top:10px;">Gap = mark ÷ 3. On coral the mark inverts (ink spark on coral tile) and the wordmark drops the nudge and the coral letter — it reads as one flat ink unit. This is the footer signature.</div>
+      </div>
+    </div>
+
+
+    <div class="card" style="padding:20px; margin-bottom:14px;">
+      <div class="lbl" style="margin-bottom:12px;">Mark variants</div>
+      <div style="display:flex; gap:22px; flex-wrap:wrap;">
+        <div style="text-align:center;"><svg width="40" height="40" viewBox="0 0 100 100" style="display:block; border-radius:9px; overflow:hidden;"><defs><mask id="dsv0"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs><rect width="100" height="100" fill="#15100c"></rect><rect width="100" height="100" fill="#e2683f" mask="url(#dsv0)"></rect></svg><div class="lbl" style="margin-top:7px;">coral · default</div></div>
+        <div style="text-align:center;"><svg width="40" height="40" viewBox="0 0 100 100" style="display:block; border-radius:9px; overflow:hidden;"><defs><mask id="dsv1"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs><rect width="100" height="100" fill="#e2683f"></rect><rect width="100" height="100" fill="#f3ede2" mask="url(#dsv1)"></rect></svg><div class="lbl" style="margin-top:7px;">cream on coral</div></div>
+        <div style="text-align:center;"><svg width="40" height="40" viewBox="0 0 100 100" style="display:block; border-radius:9px; overflow:hidden;"><defs><mask id="dsv2"><rect width="100" height="100" fill="white"></rect><path d="M50 8c3.4 22.4 16.4 35.4 40 39-23.6 3.6-36.6 16.6-40 39-3.4-22.4-16.4-35.4-40-39 23.6-3.6 36.6-16.6 40-39z" fill="black" transform="translate(50 50) scale(0.86) translate(-50 -50)"></path></mask></defs><rect width="100" height="100" fill="#17120e"></rect><rect width="100" height="100" fill="#f3ede2" mask="url(#dsv2)"></rect></svg><div class="lbl" style="margin-top:7px;">one ink</div></div>
+      </div>
+      <div class="spec" style="margin-top:12px;">Coral on ink is the default. Cream on coral is for coral grounds; one-ink is for single-colour print, favicons and anywhere coral would fail contrast. No fourth variant.</div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:56px; font-size:13px; color:#c3b6a6;">
+      <b style="color:#f5ede0;">Rules</b> — clearspace equals the tile's corner radius on all sides. The mark never carries a gradient, a stroke, or a rotation. On photography use the coral tile, never the wordmark alone. The launch-screen glow (<span class="mono" style="font-size:11px; color:#f0a483;">shadow-brand-bloom</span>) is the only shadow the logo is ever allowed.
+    </div>
+
+    <h3 id="color" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Color</h3>
+    <div class="spec" style="margin-bottom:18px;">Named by role, not hue. <span class="mono" style="font-size:11.5px; color:#f0a483;">bg-primary</span> stays correct if the brand shifts.</div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:14px;">
+      <div><div style="height:58px; border-radius:14px; background:#e2683f;"></div><div class="swatchname">primary · #e2683f</div><div class="swatchuse">CTAs, links, focus ring. Appears once per screen.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#eab54a;"></div><div class="swatchname">secondary · #eab54a</div><div class="swatchuse">Guest state, warning, active filter pill.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#5bbf88;"></div><div class="swatchname">accent · #5bbf88</div><div class="swatchuse">True states: selected, verified, open, success.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#d64f4f;"></div><div class="swatchname">destructive · #d64f4f</div><div class="swatchuse">Delete, error. The only red in the system.</div></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:14px;">
+      <div><div style="height:58px; border-radius:14px; background:#17120e; border:1px solid rgba(245,237,224,0.14);"></div><div class="swatchname">background · #17120e</div><div class="swatchuse">Page.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#1b1510; border:1px solid rgba(245,237,224,0.14);"></div><div class="swatchname">popover · #1b1510</div><div class="swatchuse">Bars, sheets, dialogs, action bars.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#241c15; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.16), 0 0 12px -2px rgba(0,0,0,0.42), 0 12px 26px -14px rgba(0,0,0,0.85);"></div><div class="swatchname">card · #241c15</div><div class="swatchuse">Card fill. Coral border at 22% — the letterpress edge carries the separation, not the border.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#241d17;"></div><div class="swatchname">muted · #241d17</div><div class="swatchuse">Chips, icon buttons, inert fills.</div></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px;">
+      <div><div style="height:58px; border-radius:14px; background:#1d1712; display:flex; align-items:center; justify-content:center;"><span style="color:#f5ede0; font-weight:700; font-size:15px;">Aa</span></div><div class="swatchname">foreground · 15.8:1</div><div class="swatchuse">Titles and anything decision-critical.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#1d1712; display:flex; align-items:center; justify-content:center;"><span style="color:#c3b6a6; font-weight:700; font-size:15px;">Aa</span></div><div class="swatchname">foreground/80 · 8.9:1</div><div class="swatchuse">Body copy.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#1d1712; display:flex; align-items:center; justify-content:center;"><span style="color:#9a8e7f; font-weight:700; font-size:15px;">Aa</span></div><div class="swatchname">muted-foreground · 5.3:1</div><div class="swatchuse">Metadata. Never the point of a screen.</div></div>
+      <div><div style="height:58px; border-radius:14px; background:#1d1712; display:flex; align-items:center; justify-content:center;"><span style="color:#6a5f52; font-weight:700; font-size:15px;">Aa</span></div><div class="swatchname">foreground/40</div><div class="swatchuse">Disabled text only.</div></div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:56px; font-size:13px; color:#c3b6a6;">
+      <b style="color:#f5ede0;">Principle</b> — coral means <i>do this</i>, green means <i>this is true</i>. Accent is never a second CTA color. Structural borders sit at coral 60% (≈3.6:1) to clear WCAG 1.4.11; cards drop to 22% because their edge is drawn by the letterpress inset, not the border.
+    </div>
+
+    <h3 id="type" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Typography</h3>
+    <div class="spec" style="margin-bottom:16px;">Bricolage Grotesque display · Space Grotesk body · IBM Plex Mono labels.</div>
+    <div class="code" style="margin-bottom:56px;">text-display  <span class="tok">56/64</span>   display 800   <span class="cm">// hero, marketing surfaces</span>
+text-h1       <span class="tok">38/40</span>   display 800   <span class="cm">// screen title, onboarding question</span>
+text-h2       <span class="tok">26/28</span>   display 700   <span class="cm">// section header</span>
+text-h3       <span class="tok">19/21</span>   display 700   <span class="cm">// card title</span>
+text-lg       <span class="tok">16/26</span>   sans 400      <span class="cm">// intro copy, creative identity line</span>
+text-base     <span class="tok">14.5/22</span> sans 400      <span class="cm">// body</span>
+text-sm       <span class="tok">12.5/17</span> sans 500      <span class="cm">// metadata, helper text</span>
+text-xs       <span class="tok">11/15</span>   mono 600 up   <span class="cm">// eyebrows, labels, timestamps</span></div>
+
+    <h3 id="space" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Spacing</h3>
+    <div class="spec" style="margin-bottom:18px;">Tailwind units, no arbitrary values. Distance is how the feed shows what belongs together.</div>
+    <div style="display:flex; align-items:flex-end; gap:22px; margin-bottom:20px; flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="width:4px; height:4px; background:#e2683f; border-radius:3px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">1 · 4</div></div>
+      <div style="text-align:center;"><div style="width:8px; height:8px; background:#e2683f; border-radius:3px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">2 · 8</div></div>
+      <div style="text-align:center;"><div style="width:12px; height:12px; background:#e2683f; border-radius:3px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">3 · 12</div></div>
+      <div style="text-align:center;"><div style="width:16px; height:16px; background:#e2683f; border-radius:3px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">4 · 16</div></div>
+      <div style="text-align:center;"><div style="width:24px; height:24px; background:#e2683f; border-radius:4px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">6 · 24</div></div>
+      <div style="text-align:center;"><div style="width:32px; height:32px; background:#e2683f; border-radius:5px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">8 · 32</div></div>
+      <div style="text-align:center;"><div style="width:48px; height:48px; background:#e2683f; border-radius:6px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">12 · 48</div></div>
+      <div style="text-align:center;"><div style="width:64px; height:64px; background:#e2683f; border-radius:7px; margin:0 auto;"></div><div class="lbl" style="margin-top:8px;">16 · 64</div></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:16px; margin-bottom:56px;">
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Where each level is used</div>
+        <div style="display:grid; grid-template-columns:74px 1fr; gap:8px 14px; font-size:12.5px;">
+          <span class="mono" style="font-size:11px; color:#f0a483;">gap-1</span><span style="color:#c3b6a6;">icon ↔ label</span>
+          <span class="mono" style="font-size:11px; color:#f0a483;">gap-2</span><span style="color:#c3b6a6;">tag rows, chip internals</span>
+          <span class="mono" style="font-size:11px; color:#f0a483;">gap-3</span><span style="color:#c3b6a6;">list rows, form fields</span>
+          <span class="mono" style="font-size:11px; color:#f0a483;">p-4 / gap-4</span><span style="color:#c3b6a6;">card padding, card grids</span>
+          <span class="mono" style="font-size:11px; color:#f0a483;">gap-6</span><span style="color:#c3b6a6;">groups inside a section, sheet padding</span>
+          <span class="mono" style="font-size:11px; color:#f0a483;">p-12 / p-16</span><span style="color:#c3b6a6;">screen edges, section breaks</span>
+        </div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Margin · padding · gap</div>
+        <div style="display:grid; grid-template-columns:60px 1fr; gap:9px 14px; font-size:12.5px;">
+          <b style="color:#f5ede0;">margin</b><span style="color:#c3b6a6;">outside — separates groups and sections</span>
+          <b style="color:#f5ede0;">padding</b><span style="color:#c3b6a6;">inside — content never touches an edge</span>
+          <b style="color:#f5ede0;">gap</b><span style="color:#c3b6a6;">between items that read as one set</span>
+        </div>
+        <div style="height:1px; background:rgba(245,237,224,0.08); margin:16px 0;"></div>
+        <div style="font-size:12.5px; color:#c3b6a6; line-height:1.65;">Tight spacing = one idea. Medium = siblings in a section. Large = a new section starts.</div>
+      </div>
+    </div>
+
+    <h3 id="radius" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Radius &amp; elevation</h3>
+    <div class="spec" style="margin-bottom:18px;">Radius scales with the surface: 10 chip, 16 input, 24 card, 26 sheet, full for buttons and tags. Elevation is structural — a card carries its letterpress at rest.</div>
+    <div style="display:flex; gap:16px; margin-bottom:18px; flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="width:62px; height:62px; background:#1d1712; border:1px solid rgba(226,104,63,0.6); border-radius:10px;"></div><div class="lbl" style="margin-top:8px;">sm · chip</div></div>
+      <div style="text-align:center;"><div style="width:62px; height:62px; background:#1d1712; border:1px solid rgba(226,104,63,0.6); border-radius:16px;"></div><div class="lbl" style="margin-top:8px;">md · input</div></div>
+      <div style="text-align:center;"><div style="width:62px; height:62px; background:#1d1712; border:1px solid rgba(226,104,63,0.6); border-radius:24px;"></div><div class="lbl" style="margin-top:8px;">lg · card · 24</div></div>
+      <div style="text-align:center;"><div style="width:62px; height:62px; background:#1d1712; border:1px solid rgba(226,104,63,0.6); border-radius:26px;"></div><div class="lbl" style="margin-top:8px;">xl · sheet · 26</div></div>
+      <div style="text-align:center;"><div style="width:62px; height:62px; background:#1d1712; border:1px solid rgba(226,104,63,0.6); border-radius:100px;"></div><div class="lbl" style="margin-top:8px;">full · button, tag</div></div>
+    </div>
+    <div style="display:flex; gap:16px; margin-bottom:80px; flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="width:120px; height:60px; background:#241c15; border:1px solid rgba(226,104,63,0.22); border-radius:16px; box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.16), 0 0 12px -2px rgba(0,0,0,0.42), 0 12px 26px -14px rgba(0,0,0,0.85);"></div><div class="lbl" style="margin-top:8px;">card · letterpress</div></div>
+      <div style="text-align:center;"><div style="width:120px; height:60px; background:#241c15; border:1px solid rgba(226,104,63,0.55); border-radius:16px; box-shadow:inset 0 1px 0 rgba(240,164,131,0.26), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.18), 0 0 14px -2px rgba(0,0,0,0.45), 0 18px 34px -14px rgba(0,0,0,0.9), 0 0 26px -10px rgba(226,104,63,0.3);"></div><div class="lbl" style="margin-top:8px;">card-hover</div></div>
+      <div style="text-align:center;"><div style="width:120px; height:60px; background:#0b0907; border-radius:16px; box-shadow:0 -30px 70px rgba(0,0,0,0.5);"></div><div class="lbl" style="margin-top:8px;">sheet · dialog</div></div>
+      <div style="text-align:center;"><div style="width:120px; height:60px; background:#e2683f; border-radius:16px; box-shadow:0 24px 60px -20px rgba(226,104,63,0.55);"></div><div class="lbl" style="margin-top:8px;">brand-bloom · logo only</div></div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:80px; font-size:13px; color:#c3b6a6;">
+      <b style="color:#f5ede0;">A card is pressed into the page, not floated above it.</b> <span class="mono" style="font-size:11px; color:#f0a483;">shadow-card</span> stacks five layers: a warm 1px inset highlight on top, a dark inset underneath, a 2px black ring, a close ambient blur, and one long soft drop. Hover strengthens the highlight and adds a coral outer glow at 30%; it never changes geometry. Only sheets and dialogs use neutral black, because they separate planes rather than raise an object. <span class="mono" style="font-size:11px; color:#f0a483;">shadow-brand-bloom</span> is reserved for the logo at launch size and decays to zero as the mark shrinks into the header — a shadow that stays behind a 26px mark reads as blur.
+    </div>
+
+    <!-- ============ 02 COMPONENTS ============ -->
+    <div style="display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid rgba(226,104,63,0.4); margin-bottom:36px;">
+      <span class="mono" style="font-size:13px; color:#e2683f;">02</span>
+      <h2 class="disp" style="font-size:32px; font-weight:800; margin:0;">Components</h2>
+    </div>
+
+    <h3 id="button" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Button</h3>
+    <div class="spec" style="margin-bottom:16px;"><b style="color:#f5ede0;">Purpose</b> — carries the priority of an action, not a style preference.</div>
+    <div class="code" style="margin-bottom:18px;"><span class="kw">variant</span> <span class="str">primary | secondary | ghost | text | destructive | icon</span>
+<span class="kw">size</span>    <span class="str">sm | default | lg | icon</span>      <span class="kw">state</span> <span class="str">default | hover | pressed | focus | disabled | loading</span></div>
+    <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:18px;">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span class="lbl" style="width:96px;">primary</span>
+        <div style="padding:13px 24px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:14.5px; cursor:pointer;" style-hover="background:#f0794f;" style-active="background:#c85a34; transform:scale(0.98);">Express interest</div>
+        <div style="padding:9px 16px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:12.5px;">sm</div>
+        <div style="padding:16px 28px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:16px;">lg</div>
+        <span class="spec">the one next step · once per screen</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span class="lbl" style="width:96px;">secondary</span>
+        <div style="padding:13px 24px; border-radius:100px; background:#211a15; border:1px solid rgba(245,237,224,0.34); color:#f5ede0; font-weight:700; font-size:14.5px; cursor:pointer;" style-hover="border-color:rgba(245,237,224,0.55); background:#2a2119;">Save creator</div>
+        <span class="spec">a real alternative, lower priority</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span class="lbl" style="width:96px;">ghost / text</span>
+        <div style="padding:13px 24px; border-radius:100px; border:1px solid rgba(245,237,224,0.24); color:#e3d7c8; font-weight:700; font-size:14.5px; cursor:pointer;" style-hover="background:rgba(245,237,224,0.06);">Not right now</div>
+        <div style="color:#9a8e7f; font-weight:600; font-size:14px; cursor:pointer;" style-hover="color:#e3d7c8;">Skip</div>
+        <div style="color:#e2683f; font-weight:600; font-size:14px; cursor:pointer;" style-hover="color:#f0a483;">See all →</div>
+        <span class="spec">escape, deferral, navigation</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span class="lbl" style="width:96px;">destructive</span>
+        <div style="padding:13px 24px; border-radius:100px; background:#d64f4f; color:#1a0d0d; font-weight:800; font-size:14.5px; cursor:pointer;" style-hover="background:#e2605f;">Delete project</div>
+        <div style="padding:13px 24px; border-radius:100px; border:1px solid rgba(214,79,79,0.5); color:#e88787; font-weight:700; font-size:14.5px; cursor:pointer;" style-hover="background:rgba(214,79,79,0.1);">Remove</div>
+        <span class="spec">always behind a dialog</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span class="lbl" style="width:96px;">icon</span>
+        <div style="width:44px; height:44px; border-radius:50%; background:#241d17; display:flex; align-items:center; justify-content:center; font-size:17px; cursor:pointer;" style-hover="background:#2f261d;">‹</div>
+        <div style="width:44px; height:44px; border-radius:50%; background:rgba(11,9,7,0.5); display:flex; align-items:center; justify-content:center; font-size:15px; cursor:pointer;" style-hover="background:rgba(11,9,7,0.7);">♡</div>
+        <div style="width:56px; height:56px; border-radius:50%; background:#e2683f; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:800; cursor:pointer; box-shadow:0 8px 24px rgba(226,104,63,0.35);">+</div>
+        <span class="spec">44px minimum, always an aria-label</span>
+      </div>
+    </div>
+    <div class="card" style="padding:20px; margin-bottom:56px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; font-size:12.5px;">
+        <div><div class="lbl" style="color:#8fe0b4; margin-bottom:7px;">Do</div><div style="color:#c3b6a6; line-height:1.6;">Onboarding step: coral <b style="color:#f5ede0;">Continue</b>, with <b style="color:#f5ede0;">Skip</b> as a text action below it.</div></div>
+        <div><div class="lbl" style="color:#e88787; margin-bottom:7px;">Don't</div><div style="color:#c3b6a6; line-height:1.6;">Two coral buttons side by side. If both look like the answer, the screen has no shape.</div></div>
+      </div>
+      <div style="height:1px; background:rgba(245,237,224,0.08); margin:16px 0;"></div>
+      <div style="font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Labels</b> — name the action: Create project, Express interest, Save creator. Not Submit, OK, or Click here. "Continue" only in a sequential step.</div>
+    </div>
+
+    <h3 id="input" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Input / Textarea / Select</h3>
+    <div class="spec" style="margin-bottom:16px;"><b style="color:#f5ede0;">Purpose</b> — collects the creator's own words; onboarding is the most exposed moment in the product.</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px;">
+      <div><div class="lbl" style="margin-bottom:6px;">empty</div><input placeholder="Portfolio link" style="width:100%; background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:14px; padding:13px 15px; font-size:14px; color:#f5ede0; outline:none;"></div>
+      <div><div class="lbl" style="margin-bottom:6px;">filled</div><input value="theomalik.com" style="width:100%; background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:14px; padding:13px 15px; font-size:14px; color:#f5ede0; outline:none;"></div>
+      <div><div class="lbl" style="margin-bottom:6px;">focus-visible</div><input value="theomalik.com" style="width:100%; background:#211a15; border:1px solid #e2683f; box-shadow:0 0 0 3px rgba(226,104,63,0.22); border-radius:14px; padding:13px 15px; font-size:14px; color:#f5ede0; outline:none;"></div>
+      <div><div class="lbl" style="margin-bottom:6px;">error</div><input value="theomalik" style="width:100%; background:#211a15; border:1px solid #d64f4f; border-radius:14px; padding:13px 15px; font-size:14px; color:#f5ede0; outline:none;"><div style="font-size:11.5px; color:#e88787; margin-top:6px;">⚠ Include the domain, e.g. theomalik.com</div></div>
+      <div><div class="lbl" style="margin-bottom:6px;">validating</div><div style="display:flex; align-items:center; gap:10px; background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:14px; padding:13px 15px;"><span class="spinner" style="width:13px; height:13px; border-radius:50%; border:2px solid rgba(245,237,224,0.2); border-top-color:#e2683f; display:inline-block;"></span><span style="font-size:14px; color:#9a8e7f;">Checking link…</span></div></div>
+      <div><div class="lbl" style="margin-bottom:6px;">disabled</div><input value="theo@progress.app" disabled="" style="width:100%; background:#1a1511; border:1px solid rgba(245,237,224,0.06); border-radius:14px; padding:13px 15px; font-size:14px; color:#5f5548;"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px;">
+      <div><div class="lbl" style="margin-bottom:6px;">textarea + counter</div><div style="display:flex; justify-content:flex-end; margin-bottom:5px;"><span class="mono" style="font-size:10.5px; color:#9a8e7f;">184/280</span></div><textarea style="width:100%; min-height:80px; resize:none; background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:16px; padding:13px 15px; font-size:14px; color:#f5ede0; outline:none;">A sound designer who likes tape, room noise and working fast on location.</textarea></div>
+      <div><div class="lbl" style="margin-bottom:6px;">select</div><div style="display:flex; align-items:center; justify-content:space-between; background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:14px; padding:13px 15px; font-size:14px; cursor:pointer;" style-hover="border-color:rgba(245,237,224,0.24);"><span>Small &amp; intimate</span><span style="color:#9a8e7f;">▾</span></div>
+        <div class="lbl" style="margin:14px 0 6px;">command · search</div><div style="display:flex; align-items:center; gap:10px; background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:100px; padding:12px 17px;"><span style="color:#7d7263;">⌕</span><span style="color:#7d7263; font-size:14px;">Search projects, creators…</span></div></div>
+      <div><div class="lbl" style="margin-bottom:6px;">tag input</div><div style="display:flex; flex-wrap:wrap; gap:7px; align-items:center; background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:14px; padding:10px 12px;"><span style="background:#2c2019; border:1px solid rgba(226,104,63,0.35); color:#f0a483; font-size:12.5px; font-weight:600; padding:6px 11px; border-radius:100px;">Wong Kar-wai ✕</span><span style="color:#7d7263; font-size:14px; padding:6px 4px;">Type a name…</span></div>
+        <div class="lbl" style="margin:14px 0 6px;">file upload</div><div style="border:1.5px dashed rgba(245,237,224,0.22); border-radius:16px; padding:14px; text-align:center; cursor:pointer;" style-hover="border-color:rgba(226,104,63,0.5);"><div style="font-size:13px; font-weight:700;">Upload work</div><div style="font-size:11px; color:#9a8e7f; margin-top:2px;">Images, PDF, audio, video</div></div></div>
+    </div>
+    <div class="card" style="padding:16px 18px; margin-bottom:56px; font-size:12.5px; color:#c3b6a6;">
+      <b style="color:#f5ede0;">Usage</b> — helper text sits under the field and is replaced by the error when there is one. Counter appears at 70% of the limit, warns at 90%, never blocks typing. Required is marked with a coral asterisk; optional is labelled in mono. Timing rules in <a href="#forms">Form validation</a>.
+    </div>
+
+    <h3 id="chips" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Badge / Tag / Toggle</h3>
+    <div class="spec" style="margin-bottom:16px;"><b style="color:#f5ede0;">Purpose</b> — a badge reports, a tag lets the user choose.</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+      <div class="card" style="padding:20px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;"><span class="disp" style="font-size:16px; font-weight:700;">Badge</span><span class="lbl" style="color:#5bbf88;">status · read-only</span></div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+          <span style="display:inline-flex; align-items:center; gap:6px; background:rgba(91,191,136,0.16); border:1px solid rgba(91,191,136,0.5); color:#8fe0b4; font-size:11.5px; font-weight:700; padding:5px 11px; border-radius:100px;">✓ Verified</span>
+          <span style="font-size:11.5px; font-weight:700; color:#8fe0b4; border:1px solid rgba(91,191,136,0.5); padding:5px 11px; border-radius:100px;">Open</span>
+          <span style="font-size:11.5px; font-weight:700; color:#9a8e7f; border:1px solid rgba(245,237,224,0.2); padding:5px 11px; border-radius:100px;">Closed</span>
+          <span style="font-size:11.5px; font-weight:700; color:#e88787; border:1px solid rgba(214,79,79,0.5); padding:5px 11px; border-radius:100px;">Closing soon</span>
+          <span style="font-size:11.5px; font-weight:700; color:#eab54a; border:1px solid rgba(234,181,74,0.45); padding:5px 11px; border-radius:100px;">Browsing freely</span>
+        </div>
+        <div class="spec">Trust and project state — the two things scanned before reaching out. No tap target.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;"><span class="disp" style="font-size:16px; font-weight:700;">Tag / toggle</span><span class="lbl" style="color:#f0a483;">filter · selectable</span></div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+          <span style="font-size:12px; font-weight:700; padding:7px 13px; border-radius:100px; background:#eab54a; color:#17120e;">All</span>
+          <span style="font-size:12px; font-weight:600; padding:7px 13px; border-radius:100px; background:#241d17; color:#e3d7c8;">Film</span>
+          <span style="font-size:12px; font-weight:600; padding:7px 13px; border-radius:100px; border:1px solid #5bbf88; background:rgba(91,191,136,0.16); color:#8fe0b4;">✓ Experimental</span>
+          <span style="font-size:12px; font-weight:600; padding:7px 13px; border-radius:100px; border:1px dashed rgba(245,237,224,0.25); color:#7d7263;">Unavailable</span>
+          <span style="display:inline-flex; align-items:center; gap:7px; background:#2c2019; border:1px solid rgba(226,104,63,0.35); color:#f0a483; font-size:12px; font-weight:600; padding:7px 12px; border-radius:100px;">Sound design ✕</span>
+        </div>
+        <div class="spec">Disciplines, feed filters, creative references — the user's own vocabulary, so it stays editable.</div>
+      </div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:56px; font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Usage</b> — if tapping it changes something, it's a tag. Selected tags use <span class="mono" style="font-size:11px; color:#8fe0b4;">accent</span>; active category pills use <span class="mono" style="font-size:11px; color:#f0c48a;">secondary</span>.</div>
+
+    <h3 id="card" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Card</h3>
+    <div class="spec" style="margin-bottom:16px;"><b style="color:#f5ede0;">Purpose</b> — a container for one object. Not a decoration for single values.</div>
+    <div class="code" style="margin-bottom:16px;">&lt;<span class="kw">Card</span>&gt; &lt;CardHeader/&gt; &lt;CardContent/&gt; &lt;CardFooter/&gt; &lt;/Card&gt;   <span class="cm">// primitive: surface, border, radius, padding, elevation, focus</span></div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px 24px; margin-bottom:16px; font-size:12.5px;">
+      <div><b style="color:#f5ede0;">surface</b> <span class="mono" style="color:#f0a483; font-size:11px;">bg-card</span> <span style="color:#9a8e7f;">#241c15</span></div>
+      <div><b style="color:#f5ede0;">border</b> <span class="mono" style="color:#f0a483; font-size:11px;">border-primary/22</span></div>
+      <div><b style="color:#f5ede0;">radius</b> <span class="mono" style="color:#f0a483; font-size:11px;">rounded-xl</span> <span style="color:#9a8e7f;">24px, media cards</span></div>
+      <div><b style="color:#f5ede0;">padding</b> <span class="mono" style="color:#f0a483; font-size:11px;">p-4</span> <span style="color:#9a8e7f;">media cards pad content only</span></div>
+      <div><b style="color:#f5ede0;">elevation</b> <span class="mono" style="color:#f0a483; font-size:11px;">shadow-card</span> <span style="color:#9a8e7f;">letterpress, always on</span></div>
+      <div><b style="color:#f5ede0;">hover</b> <span class="mono" style="color:#f0a483; font-size:11px;">shadow-card-hover</span> <span style="color:#9a8e7f;">+ border-primary/55, no lift</span></div>
+      <div><b style="color:#f5ede0;">press</b> <span class="mono" style="color:#f0a483; font-size:11px;">scale-[0.985]</span> <span style="color:#9a8e7f;">tappable cards only</span></div>
+      <div><b style="color:#f5ede0;">focus</b> <span class="mono" style="color:#f0a483; font-size:11px;">ring-primary</span></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:16px;">
+      <div><div class="lbl" style="margin-bottom:7px;">default</div><div class="card" style="overflow:hidden;"><div style="height:70px; background:linear-gradient(155deg,#5b8a76,#2f5a4c);"></div><div style="padding:13px;"><div style="font-size:13.5px; font-weight:700;">Experimental Dance Film</div><div style="font-size:11.5px; color:#9a8e7f; margin-top:3px;">Maya Rivera</div></div></div></div>
+      <div><div class="lbl" style="margin-bottom:7px;">hover</div><div class="card" style="overflow:hidden; border-color:rgba(226,104,63,0.55); box-shadow:inset 0 1px 0 rgba(240,164,131,0.26), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.18), 0 0 14px -2px rgba(0,0,0,0.45), 0 18px 34px -14px rgba(0,0,0,0.9), 0 0 26px -10px rgba(226,104,63,0.3);"><div style="height:70px; background:linear-gradient(155deg,#5b8a76,#2f5a4c);"></div><div style="padding:13px;"><div style="font-size:13.5px; font-weight:700;">Experimental Dance Film</div><div style="font-size:11.5px; color:#9a8e7f; margin-top:3px;">Maya Rivera</div></div></div></div>
+      <div><div class="lbl" style="margin-bottom:7px;">selected</div><div class="card" style="overflow:hidden; border-color:#5bbf88; background:rgba(91,191,136,0.1); box-shadow:inset 0 1px 0 rgba(143,224,180,0.2), 0 12px 26px -14px rgba(0,0,0,0.85);"><div style="height:70px; background:linear-gradient(155deg,#5b8a76,#2f5a4c);"></div><div style="padding:13px;"><div style="font-size:13.5px; font-weight:700; color:#8fe0b4;">✓ Small &amp; intimate</div></div></div></div>
+      <div><div class="lbl" style="margin-bottom:7px;">loading</div><div class="card" style="overflow:hidden;"><div style="height:70px; background:#2a2018;"></div><div style="padding:13px;"><div style="height:12px; width:72%; background:#2a2018; border-radius:5px; margin-bottom:8px;"></div><div style="height:10px; width:44%; background:#2a2018; border-radius:5px;"></div></div></div></div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:56px; font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Usage</b> — the primitive owns how a card looks; product cards own what a card says. See <a href="#cards">Product cards</a>.</div>
+
+    <h3 id="misc" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Avatar · Progress · Tabs · Selection</h3>
+    <div class="spec" style="margin-bottom:18px;">Small primitives, fixed behaviour.</div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:56px;">
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Avatar · 26 / 44 / 64</div>
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:12px;">
+          <span style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#e2683f,#eab54a); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#17120e;">MR</span>
+          <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#557089,#33465a); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">TM</span>
+          <span style="position:relative; width:64px; height:64px;"><span style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,#b06a86,#7c4560); display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:700;">PN</span><span style="position:absolute; right:-2px; bottom:-2px; width:20px; height:20px; border-radius:50%; background:#5bbf88; border:3px solid #17120e; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; color:#17120e;">✓</span></span>
+        </div>
+        <div class="spec">Fallback is a gradient + initials, never a grey silhouette. Verified tick attaches at 64px only.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Progress · Tabs · Checkbox · Radio</div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <div style="flex:1; height:4px; background:rgba(245,237,224,0.1); border-radius:100px; overflow:hidden;"><div style="height:100%; width:67%; background:#5bbf88; border-radius:100px;"></div></div>
+          <span class="mono" style="font-size:11px; color:#9a8e7f;">67</span>
+        </div>
+        <div style="display:flex; gap:4px; background:#211a15; border-radius:100px; padding:4px; width:fit-content; margin-bottom:14px;">
+          <span style="padding:8px 16px; border-radius:100px; background:#e2683f; color:#17120e; font-size:12.5px; font-weight:700;">Projects</span>
+          <span style="padding:8px 16px; border-radius:100px; color:#9a8e7f; font-size:12.5px; font-weight:700;">Creators</span>
+        </div>
+        <div style="display:flex; gap:18px; align-items:center;">
+          <div style="display:flex; align-items:center; gap:8px;"><span style="width:20px; height:20px; border-radius:6px; border:2px solid #4a4038;"></span><span style="font-size:12.5px; color:#c3b6a6;">off</span></div>
+          <div style="display:flex; align-items:center; gap:8px;"><span style="width:20px; height:20px; border-radius:6px; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">✓</span><span style="font-size:12.5px; color:#c3b6a6;">on</span></div>
+          <div style="display:flex; align-items:center; gap:8px;"><span style="width:20px; height:20px; border-radius:50%; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800;">✓</span><span style="font-size:12.5px; color:#c3b6a6;">radio on</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="overlay" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Dialog / Sheet / Toast / Dropdown</h3>
+    <div class="spec" style="margin-bottom:18px;"><b style="color:#f5ede0;">Purpose</b> — a toast reports what happened; a dialog asks for a decision.</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:16px;">
+      <div>
+        <div class="lbl" style="margin-bottom:8px;">Dialog · decision</div>
+        <div style="background:#1b1510; border:1px solid rgba(245,237,224,0.1); border-radius:20px; padding:20px; box-shadow:0 30px 70px rgba(0,0,0,0.5);">
+          <div class="disp" style="font-weight:800; font-size:17px; margin-bottom:7px;">Delete this project?</div>
+          <div style="font-size:12.5px; color:#9a8e7f; margin-bottom:16px; line-height:1.5;">This can't be undone. Collaborators will lose access.</div>
+          <div style="display:flex; gap:8px;"><span style="flex:1; text-align:center; padding:10px; border-radius:100px; border:1px solid rgba(245,237,224,0.2); font-size:12.5px; font-weight:700;">Cancel</span><span style="flex:1; text-align:center; padding:10px; border-radius:100px; background:#d64f4f; color:#1a0d0d; font-size:12.5px; font-weight:800;">Delete</span></div>
+        </div>
+        <div class="spec" style="margin-top:10px;">Delete a project · discard edits · leave a flow.</div>
+      </div>
+      <div>
+        <div class="lbl" style="margin-bottom:8px;">Sheet · mobile surface</div>
+        <div style="background:#1b1510; border-radius:26px 26px 0 0; padding:16px 20px 22px; box-shadow:0 -20px 50px rgba(0,0,0,0.4);">
+          <div style="width:36px; height:4px; background:rgba(245,237,224,0.18); border-radius:100px; margin:0 auto 14px;"></div>
+          <div class="eyebrow" style="margin-bottom:8px;">Join the community</div>
+          <div class="disp" style="font-weight:800; font-size:18px; line-height:1.1; margin-bottom:16px;">Ready to become part of it?</div>
+          <div style="background:#e2683f; color:#17120e; border-radius:100px; padding:12px; text-align:center; font-weight:800; font-size:13px;">Join the community</div>
+        </div>
+        <div class="spec" style="margin-top:10px;">Any dialog below <span class="mono" style="font-size:11px; color:#f0a483;">md</span>, except destructive confirms.</div>
+      </div>
+      <div>
+        <div class="lbl" style="margin-bottom:8px;">Toast · feedback</div>
+        <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:12px;">
+          <div style="align-self:flex-start; display:inline-flex; align-items:center; gap:9px; background:rgba(29,23,18,0.72); backdrop-filter:blur(16px) saturate(1.3); border:1px solid rgba(91,191,136,0.45); border-radius:100px; padding:10px 16px; box-shadow:0 12px 34px rgba(0,0,0,0.4);"><span style="width:19px; height:19px; border-radius:50%; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800;">✓</span><span style="font-size:12.5px; font-weight:600;">Interest sent to Maya</span></div>
+          <div style="align-self:flex-start; display:inline-flex; align-items:center; gap:9px; background:rgba(29,23,18,0.72); backdrop-filter:blur(16px) saturate(1.3); border:1px solid rgba(214,79,79,0.45); border-radius:100px; padding:10px 16px; box-shadow:0 12px 34px rgba(0,0,0,0.4);"><span style="color:#e88787;">⚠</span><span style="font-size:12.5px; font-weight:600;">Couldn't connect — <span style="color:#f0a483;">try again</span></span></div>
+        </div>
+        <div class="lbl" style="margin-bottom:8px;">Dropdown</div>
+        <div style="background:#211a15; border:1px solid rgba(245,237,224,0.14); border-radius:14px; padding:6px; box-shadow:0 12px 30px rgba(0,0,0,0.4);">
+          <div style="padding:9px 11px; border-radius:9px; font-size:12.5px; font-weight:600; cursor:pointer;" style-hover="background:#2c2019;">Edit project</div>
+          <div style="padding:9px 11px; border-radius:9px; font-size:12.5px; font-weight:600; color:#e88787; cursor:pointer;" style-hover="background:rgba(214,79,79,0.12);">Delete</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:80px; font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Usage</b> — if it can disappear on its own, it's a toast. Toasts auto-dismiss in 3–4s and never hold the only copy of something important.</div>
+
+    <!-- ============ 03 STATES & FEEDBACK ============ -->
+    <div style="display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid rgba(226,104,63,0.4); margin-bottom:36px;">
+      <span class="mono" style="font-size:13px; color:#e2683f;">03</span>
+      <h2 class="disp" style="font-size:32px; font-weight:800; margin:0;">States &amp; feedback</h2>
+    </div>
+
+    <h3 id="states" class="disp" style="font-size:21px; font-weight:700; margin:0 0 18px;">Interaction states</h3>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px;">
+      <div class="card" style="padding:18px;"><div class="disp" style="font-size:16px; font-weight:700; margin-bottom:5px;">Hover</div><div class="spec" style="margin-bottom:8px;">Pointer is over it. Nothing has happened yet.</div><div class="mono" style="font-size:10.5px; color:#f0a483;">brighten ~8% · raise shadow</div></div>
+      <div class="card" style="padding:18px;"><div class="disp" style="font-size:16px; font-weight:700; margin-bottom:5px;">Pressed</div><div class="spec" style="margin-bottom:8px;">Being activated right now, pointer or keyboard.</div><div class="mono" style="font-size:10.5px; color:#f0a483;">darken · scale 0.98</div></div>
+      <div class="card" style="padding:18px;"><div class="disp" style="font-size:16px; font-weight:700; margin-bottom:5px;">Focus-visible</div><div class="spec" style="margin-bottom:8px;">Where the next Enter lands. Never suppressed.</div><div class="mono" style="font-size:10.5px; color:#f0a483;">ring-primary · 3px offset</div></div>
+      <div class="card" style="padding:18px;"><div class="disp" style="font-size:16px; font-weight:700; margin-bottom:5px;">Selected</div><div class="spec" style="margin-bottom:8px;">A persistent choice. Survives blur and reload.</div><div class="mono" style="font-size:10.5px; color:#8fe0b4;">accent border + tint + ✓</div></div>
+    </div>
+
+    <div id="matrix" class="card" style="padding:22px; margin-bottom:20px; overflow-x:auto;">
+      <div class="lbl" style="margin-bottom:16px;">State matrix</div>
+      <div style="display:grid; grid-template-columns:112px repeat(6,minmax(112px,1fr)); gap:14px 12px; align-items:center; min-width:880px;">
+        <div></div>
+        <div class="lbl">default</div><div class="lbl">hover</div><div class="lbl">pressed</div><div class="lbl">focus</div><div class="lbl">selected</div><div class="lbl">disabled</div>
+
+        <div class="mono" style="font-size:11px; color:#f5ede0;">Button</div>
+        <div><span style="display:inline-block; padding:9px 14px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:11.5px;">Interest</span></div>
+        <div><span style="display:inline-block; padding:9px 14px; border-radius:100px; background:#f0794f; color:#17120e; font-weight:800; font-size:11.5px;">Interest</span></div>
+        <div><span style="display:inline-block; padding:9px 14px; border-radius:100px; background:#c85a34; color:#17120e; font-weight:800; font-size:11.5px; transform:scale(0.98);">Interest</span></div>
+        <div><span style="display:inline-block; padding:9px 14px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:11.5px; box-shadow:0 0 0 3px rgba(226,104,63,0.35);">Interest</span></div>
+        <div class="mono" style="font-size:10.5px; color:#5f5548;">—</div>
+        <div><span style="display:inline-block; padding:9px 14px; border-radius:100px; background:#5c4633; color:#8a7d6e; font-weight:800; font-size:11.5px;">Interest</span></div>
+
+        <div class="mono" style="font-size:11px; color:#f5ede0;">Input</div>
+        <div><div style="background:#211a15; border:1px solid rgba(245,237,224,0.1); border-radius:10px; padding:9px 11px; font-size:11.5px; color:#7d7263;">Berlin</div></div>
+        <div><div style="background:#241d17; border:1px solid rgba(245,237,224,0.24); border-radius:10px; padding:9px 11px; font-size:11.5px; color:#c3b6a6;">Berlin</div></div>
+        <div class="mono" style="font-size:10.5px; color:#5f5548;">—</div>
+        <div><div style="background:#211a15; border:1px solid #e2683f; box-shadow:0 0 0 3px rgba(226,104,63,0.22); border-radius:10px; padding:9px 11px; font-size:11.5px; color:#f5ede0;">Berlin</div></div>
+        <div class="mono" style="font-size:10.5px; color:#5f5548;">—</div>
+        <div><div style="background:#1a1511; border:1px solid rgba(245,237,224,0.06); border-radius:10px; padding:9px 11px; font-size:11.5px; color:#5f5548;">Berlin</div></div>
+
+        <div class="mono" style="font-size:11px; color:#f5ede0;">Card</div>
+        <div><div class="card" style="height:32px; border-radius:12px;"></div></div>
+        <div><div class="card" style="height:32px; border-radius:12px; border-color:rgba(226,104,63,0.55); box-shadow:inset 0 1px 0 rgba(240,164,131,0.26), inset 0 -1px 0 rgba(0,0,0,0.4), 0 0 0 2px rgba(0,0,0,0.18), 0 0 14px -2px rgba(0,0,0,0.45), 0 18px 34px -14px rgba(0,0,0,0.9), 0 0 26px -10px rgba(226,104,63,0.3);"></div></div>
+        <div><div class="card" style="height:32px; border-radius:12px; transform:scale(0.985);"></div></div>
+        <div><div class="card" style="height:32px; border-radius:12px; box-shadow:0 0 0 3px rgba(226,104,63,0.35);"></div></div>
+        <div><div class="card" style="height:32px; border-radius:12px; border-color:#5bbf88; background:rgba(91,191,136,0.1);"></div></div>
+        <div><div class="card" style="height:32px; border-radius:12px; border-color:rgba(245,237,224,0.08); background:#1a1511;"></div></div>
+
+        <div class="mono" style="font-size:11px; color:#f5ede0;">Tag</div>
+        <div><span style="font-size:11.5px; font-weight:600; padding:7px 12px; border-radius:100px; background:#241d17; color:#e3d7c8;">Film</span></div>
+        <div><span style="font-size:11.5px; font-weight:600; padding:7px 12px; border-radius:100px; background:#2c2019; color:#f5ede0;">Film</span></div>
+        <div><span style="display:inline-block; font-size:11.5px; font-weight:600; padding:7px 12px; border-radius:100px; background:#17120e; color:#f5ede0; transform:scale(0.98);">Film</span></div>
+        <div><span style="font-size:11.5px; font-weight:600; padding:7px 12px; border-radius:100px; background:#241d17; color:#e3d7c8; box-shadow:0 0 0 3px rgba(226,104,63,0.35);">Film</span></div>
+        <div><span style="font-size:11.5px; font-weight:600; padding:7px 12px; border-radius:100px; border:1px solid #5bbf88; background:rgba(91,191,136,0.16); color:#8fe0b4;">✓ Film</span></div>
+        <div><span style="font-size:11.5px; font-weight:600; padding:7px 12px; border-radius:100px; border:1px dashed rgba(245,237,224,0.25); color:#7d7263;">Film</span></div>
+
+        <div class="mono" style="font-size:11px; color:#f5ede0;">Checkbox</div>
+        <div><span style="width:20px; height:20px; border-radius:6px; border:2px solid #4a4038; display:inline-block;"></span></div>
+        <div><span style="width:20px; height:20px; border-radius:6px; border:2px solid #6a5f52; display:inline-block;"></span></div>
+        <div><span style="width:20px; height:20px; border-radius:6px; border:2px solid #6a5f52; display:inline-block; transform:scale(0.94);"></span></div>
+        <div><span style="width:20px; height:20px; border-radius:6px; border:2px solid #4a4038; display:inline-block; box-shadow:0 0 0 3px rgba(226,104,63,0.35);"></span></div>
+        <div><span style="width:20px; height:20px; border-radius:6px; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">✓</span></div>
+        <div><span style="width:20px; height:20px; border-radius:6px; border:2px solid #332c26; display:inline-block;"></span></div>
+      </div>
+    </div>
+
+    <h3 id="feedback" class="disp" style="font-size:21px; font-weight:700; margin:36px 0 18px;">Feedback states</h3>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:20px;">
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Disabled</div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+          <span style="padding:11px 20px; border-radius:100px; background:#5c4633; color:#8a7d6e; font-weight:800; font-size:13px;">Express interest</span>
+          <span style="font-size:12px; color:#9a8e7f; line-height:1.5;">Add one portfolio piece first —<br>creators want to see your work.</span>
+        </div>
+        <div class="spec">Give the reason when the user could fix it: not signed in, missing info, project closed, no permission.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Loading</div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:12px;">
+          <div style="display:inline-flex; align-items:center; gap:9px; padding:11px 20px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:13px; width:fit-content;"><span class="spinner" style="width:12px; height:12px; border-radius:50%; border:2px solid rgba(23,18,14,0.35); border-top-color:#17120e; display:inline-block;"></span>Sending your interest…</div>
+          <div style="display:flex; gap:8px;"><div style="flex:1; height:32px; background:#241d17; border-radius:9px;"></div><div style="flex:1; height:32px; background:#241d17; border-radius:9px;"></div><div style="flex:1; height:32px; background:#241d17; border-radius:9px;"></div></div>
+        </div>
+        <div class="spec">Button spinner for a committed action; skeletons in the real geometry for content. Name the work, not the wait.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Error</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;">
+          <div style="display:inline-flex; align-items:center; gap:9px; background:#1b1510; border:1px solid rgba(214,79,79,0.4); border-radius:12px; padding:10px 13px;"><span style="color:#e88787;">⚠</span><span style="font-size:12.5px; font-weight:600;">We couldn't save your project. Try again.</span></div>
+          <div style="display:inline-flex; align-items:center; gap:9px; background:#1b1510; border:1px solid rgba(214,79,79,0.4); border-radius:12px; padding:10px 13px;"><span style="color:#e88787;">⚠</span><span style="font-size:12.5px; font-weight:600;">That link couldn't be imported. Check the URL.</span></div>
+        </div>
+        <div class="spec">What failed, then the move. Never "Something went wrong", never blame the user.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Success</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;">
+          <div style="display:inline-flex; align-items:center; gap:9px; background:#1b1510; border:1px solid rgba(91,191,136,0.4); border-radius:12px; padding:10px 13px;"><span style="width:18px; height:18px; border-radius:50%; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800;">✓</span><span style="font-size:12.5px; font-weight:600;">Project published — it's live in Discover</span></div>
+          <div style="display:inline-flex; align-items:center; gap:9px; background:#1b1510; border:1px solid rgba(91,191,136,0.4); border-radius:12px; padding:10px 13px;"><span style="width:18px; height:18px; border-radius:50%; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800;">✓</span><span style="font-size:12.5px; font-weight:600;">Interest sent — Maya will be notified</span></div>
+        </div>
+        <div class="spec">Confirm the outcome, then the consequence. Never colour alone — every state carries a glyph and words.</div>
+      </div>
+    </div>
+
+    <h3 id="motion" class="disp" style="font-size:21px; font-weight:700; margin:36px 0 18px;">Motion</h3>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px;">
+      <div class="card" style="padding:18px;"><div style="display:flex; align-items:baseline; gap:9px; margin-bottom:7px;"><span class="disp" style="font-size:16px; font-weight:700;">Fast</span><span class="mono" style="font-size:10.5px; color:#f0a483;">120ms</span></div><div class="spec">Hover, press, chip select, checkbox fill. Feels like the control, not an animation of it.</div></div>
+      <div class="card" style="padding:18px;"><div style="display:flex; align-items:baseline; gap:9px; margin-bottom:7px;"><span class="disp" style="font-size:16px; font-weight:700;">Standard</span><span class="mono" style="font-size:10.5px; color:#f0a483;">240ms</span></div><div class="spec">Toast in/out, dropdown, tab swap, skeleton → content crossfade.</div></div>
+      <div class="card" style="padding:18px;"><div style="display:flex; align-items:baseline; gap:9px; margin-bottom:7px;"><span class="disp" style="font-size:16px; font-weight:700;">Slow</span><span class="mono" style="font-size:10.5px; color:#f0a483;">300ms</span></div><div class="spec">Sheet rise, dialog scale 0.96→1, screen fade. The only noticeable motion.</div></div>
+    </div>
+    <div class="card" style="padding:18px 20px; margin-bottom:80px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; font-size:12.5px; color:#c3b6a6; line-height:1.7;">
+        <div>Cards hover with shadow and border only — the geometry never moves, because a grid that shifts is harder to scan. A tappable card presses to 0.985, a button to 0.98, both with no bounce. Toasts are glass pills that fade + rise 8px in and fade only out.</div>
+        <div>Spinner 0.9s linear, constant — it reports duration. Skeleton pulses at 1.6s, no travelling shimmer. Under <span class="mono" style="font-size:11px; color:#f0a483;">prefers-reduced-motion</span> transitions cut to instant and the pulse stops; spinners keep turning.</div>
+      </div>
+    </div>
+
+    <h3 id="launch" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Launch sequence</h3>
+    <div class="spec" style="margin-bottom:18px;">2400ms, one continuous move: the logo assembles at centre, then travels to its resting place in the feed header. Nothing else animates. Tapping anywhere skips to the feed.</div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:16px;">
+      <div class="card" style="padding:18px;">
+        <div class="lbl" style="margin-bottom:7px;">0 – 24% · mark in</div>
+        <div class="spec">Tile scales 0.3 → 1 and fades in on <span class="mono" style="font-size:11px; color:#f0a483;">cubic-bezier(.2,.7,.3,1)</span>, carrying <span class="mono" style="font-size:11px; color:#f0a483;">shadow-brand-bloom</span>.</div>
+      </div>
+      <div class="card" style="padding:18px;">
+        <div class="lbl" style="margin-bottom:7px;">22 – 54% · wordmark</div>
+        <div class="spec">Letters cascade in at 34ms stagger, 420ms each, rising 9px. Held still until the move begins.</div>
+      </div>
+      <div class="card" style="padding:18px;">
+        <div class="lbl" style="margin-bottom:7px;">54 – 100% · travel</div>
+        <div class="spec">Mark translates to the header slot and scales to 0.259 (116px → 30px) while the bloom decays to zero. The centred wordmark fades out as the header lockup takes over.</div>
+      </div>
+      <div class="card" style="padding:18px;">
+        <div class="lbl" style="margin-bottom:7px;">58 – 100% · curtain</div>
+        <div class="spec">The dark launch plane slides up and off on <span class="mono" style="font-size:11px; color:#f0a483;">cubic-bezier(.65,0,.35,1)</span>, revealing the feed already in place. No leading edge, no light streak — the plane leaves silently.</div>
+      </div>
+    </div>
+    <div class="card" style="padding:16px 20px; margin-bottom:80px; font-size:13px; color:#c3b6a6;">
+      <b style="color:#f5ede0;">The launch screen is a transition, not a splash.</b> It exists to move the logo into the header, so the destination is visible the moment the plane clears. Nothing loads behind it and no progress is implied. Under <span class="mono" style="font-size:11px; color:#f0a483;">prefers-reduced-motion</span> the whole sequence resolves instantly to the feed.
+    </div>
+
+    <!-- ============ 04 PATTERNS ============ -->
+    <div style="display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid rgba(226,104,63,0.4); margin-bottom:36px;">
+      <span class="mono" style="font-size:13px; color:#e2683f;">04</span>
+      <h2 class="disp" style="font-size:32px; font-weight:800; margin:0;">Patterns</h2>
+    </div>
+
+    <h3 id="cards" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Product cards</h3>
+    <div class="spec" style="margin-bottom:20px;">Four objects on one primitive. Each defines its own hierarchy; none redefines the surface.</div>
+
+    <div style="display:grid; grid-template-columns:300px 1fr; gap:28px; margin-bottom:20px; align-items:start;">
+      <div class="card" style="overflow:hidden;">
+        <div style="height:140px; background:linear-gradient(155deg,#5b8a76,#2f5a4c); position:relative;">
+          <span style="position:absolute; top:12px; left:12px; font-size:11px; font-weight:700; color:#8fe0b4; background:rgba(11,9,7,0.6); border:1px solid rgba(91,191,136,0.5); padding:4px 10px; border-radius:100px;">Open</span>
+          <span style="position:absolute; top:10px; right:10px; width:34px; height:34px; border-radius:50%; background:rgba(11,9,7,0.5); display:flex; align-items:center; justify-content:center; font-size:14px;">♡</span>
+        </div>
+        <div style="padding:16px;">
+          <h4 class="disp" style="margin:0 0 6px; font-size:18px; font-weight:700;">Experimental Dance Film</h4>
+          <div style="display:flex; align-items:center; gap:7px; margin-bottom:11px;"><span style="width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,#e2683f,#eab54a);"></span><span style="font-size:12.5px; color:#c3b6a6;">Maya Rivera</span><span style="width:13px; height:13px; border-radius:50%; background:#5bbf88; color:#17120e; display:inline-flex; align-items:center; justify-content:center; font-size:8px; font-weight:800;">✓</span></div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:9px;"><span style="font-size:11px; font-weight:600; padding:4px 10px; border-radius:100px; background:#241d17; color:#e3d7c8;">Dance</span><span style="font-size:11px; font-weight:600; padding:4px 10px; border-radius:100px; background:#241d17; color:#e3d7c8;">16mm</span></div>
+          <div style="font-size:12.5px; color:#c3b6a6; margin-bottom:14px;">Looking for a <b style="color:#f5ede0;">sound designer</b> · Berlin</div>
+          <div style="text-align:center; padding:11px; border-radius:100px; background:#e2683f; color:#17120e; font-size:13px; font-weight:800;">Express interest</div>
+        </div>
+      </div>
+      <div>
+        <div class="lbl" style="margin-bottom:12px;">ProjectCard · anatomy</div>
+        <div style="display:grid; grid-template-columns:auto 128px 1fr; gap:9px 14px; font-size:12.5px; align-items:baseline; margin-bottom:18px;">
+          <span class="mono" style="font-size:10px; color:#e2683f;">01</span><b style="color:#f5ede0;">Cover</b><span style="color:#9a8e7f;">visual context before a word is read</span>
+          <span class="mono" style="font-size:10px; color:#e2683f;">02</span><b style="color:#f5ede0;">Title</b><span style="color:#9a8e7f;">two lines max, never truncated mid-word</span>
+          <span class="mono" style="font-size:10px; color:#e2683f;">03</span><b style="color:#f5ede0;">Creator + verified</b><span style="color:#9a8e7f;">the trust signal that replaces a cold DM</span>
+          <span class="mono" style="font-size:10px; color:#e2683f;">04</span><b style="color:#f5ede0;">Disciplines</b><span style="color:#9a8e7f;">two tags, then <span class="mono" style="font-size:10.5px;">+3</span></span>
+          <span class="mono" style="font-size:10px; color:#e2683f;">05</span><b style="color:#f5ede0;">Looking for</b><span style="color:#9a8e7f;">whether there's room for this reader</span>
+          <span class="mono" style="font-size:10px; color:#e2683f;">06</span><b style="color:#f5ede0;">Status</b><span style="color:#9a8e7f;">badge on the cover, survives scanning</span>
+          <span class="mono" style="font-size:10px; color:#e2683f;">07</span><b style="color:#f5ede0;">Action</b><span style="color:#9a8e7f;">one primary; the grid around it stays quiet</span>
+        </div>
+        <div class="spec" style="margin-bottom:16px;"><b style="color:#f5ede0;">At a glance:</b> cover, title, status, looking-for. <b style="color:#f5ede0;">Secondary:</b> location, team size, timeline — questions that only arrive after interest. Reading order is fixed: what is it → who made it → can I still join → what do I do.</div>
+        <div class="lbl" style="margin-bottom:10px;">States</div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+          <div><div class="lbl" style="margin-bottom:6px; color:#9a8e7f;">default</div><div class="card" style="padding:11px;"><div style="height:34px; background:linear-gradient(155deg,#5b8a76,#2f5a4c); border-radius:7px; margin-bottom:8px;"></div><div style="font-size:11.5px; font-weight:700;">Dance Film</div></div></div>
+          <div><div class="lbl" style="margin-bottom:6px; color:#9a8e7f;">saved</div><div class="card" style="padding:11px; border-color:#5bbf88;"><div style="height:34px; background:linear-gradient(155deg,#5b8a76,#2f5a4c); border-radius:7px; margin-bottom:8px; position:relative;"><span style="position:absolute; top:4px; right:5px; font-size:11px; color:#8fe0b4;">♥</span></div><div style="font-size:11.5px; font-weight:700;">Dance Film</div></div></div>
+          <div><div class="lbl" style="margin-bottom:6px; color:#9a8e7f;">loading</div><div class="card" style="padding:11px;"><div style="height:34px; background:#2a2018; border-radius:7px; margin-bottom:8px;"></div><div style="height:10px; width:70%; background:#2a2018; border-radius:5px;"></div></div></div>
+          <div><div class="lbl" style="margin-bottom:6px; color:#9a8e7f;">closed</div><div class="card" style="padding:11px; border-color:rgba(245,237,224,0.12);"><div style="height:34px; background:linear-gradient(155deg,#3f4a45,#2b322f); border-radius:7px; margin-bottom:8px;"></div><div style="font-size:11.5px; font-weight:700; color:#8a7d6e;">Dance Film</div><div style="font-size:10px; color:#7d7263; margin-top:3px;">Closed 3 days ago</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px;">
+      <div class="card" style="padding:20px;">
+        <div class="disp" style="font-size:16px; font-weight:700; margin-bottom:10px;">CreatorCard</div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#557089,#33465a); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;">TM</span>
+          <div><div style="font-size:14px; font-weight:700; display:flex; align-items:center; gap:6px;">Theo Malik<span style="width:14px; height:14px; border-radius:50%; background:#5bbf88; color:#17120e; display:inline-flex; align-items:center; justify-content:center; font-size:8px; font-weight:800;">✓</span></div><div style="font-size:11px; color:#9a8e7f;">Sound Designer · Composer</div></div>
+        </div>
+        <p style="margin:0 0 9px; font-size:12.5px; color:#c3b6a6; line-height:1.5;">"Field recordings, tape saturation, rooms that sound like memory."</p>
+        <div style="font-size:11.5px; color:#8fe0b4; margin-bottom:12px;">Open to short films &amp; live scores</div>
+        <div class="spec">Peaks on the identity line, not a cover — the question is taste, not scope. Avatar → name → disciplines → identity → open-to → mutual context → action. No status badge: people aren't open or closed.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="disp" style="font-size:16px; font-weight:700; margin-bottom:10px;">PortfolioCard</div>
+        <div class="card" style="overflow:hidden; border-color:rgba(245,237,224,0.1); margin-bottom:12px;">
+          <div style="height:78px; background:linear-gradient(155deg,#6b5f7d,#3d3450);"></div>
+          <div style="padding:10px 11px;"><div style="font-size:12.5px; font-weight:700;">Nightbus</div><div class="lbl" style="margin-top:3px;">16mm · short film</div></div>
+        </div>
+        <div class="spec">Media → title → medium → creator (dropped inside a profile). Lighter border, no CTA, no status. The card should almost disappear behind the work.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="disp" style="font-size:16px; font-weight:700; margin-bottom:10px;">MessagePreviewCard</div>
+        <div class="card" style="padding:11px; display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+          <span style="width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,#e2683f,#eab54a); flex-shrink:0;"></span>
+          <div style="flex:1; min-width:0;"><div style="font-size:12.5px; font-weight:700;">Maya Rivera</div><div style="font-size:11.5px; color:#f5ede0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Loved your reel — when can you start?</div><div class="lbl" style="margin-top:2px;">Experimental Dance Film</div></div>
+          <span style="width:8px; height:8px; border-radius:50%; background:#e2683f; flex-shrink:0;"></span>
+        </div>
+        <div class="spec">Who → message on one truncated line → which project → time and unread dot. Unread puts the message at <span class="mono" style="font-size:11px; color:#f0a483;">foreground</span>; read drops to muted. No count badge on the row.</div>
+      </div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:56px; font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Principle</b> — product cards inherit the primitive's visual rules and define their own hierarchy. A new object is a new hierarchy, not a new visual language.</div>
+
+    <h3 id="empty" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Empty states</h3>
+    <div class="spec" style="margin-bottom:18px;">Three situations that look identical in a wireframe. The CTA is what separates them.</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:16px;">
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="color:#e2683f; margin-bottom:12px;">Empty · nothing exists</div>
+        <div style="background:#1b1510; border:1px dashed rgba(245,237,224,0.14); border-radius:16px; padding:22px; text-align:center;">
+          <div style="width:40px; height:40px; border-radius:50%; background:#241d17; display:flex; align-items:center; justify-content:center; font-size:18px; color:#9a8e7f; margin:0 auto 12px;">✦</div>
+          <div class="disp" style="font-size:16px; font-weight:700; margin-bottom:5px;">No projects yet</div>
+          <div style="font-size:12px; color:#9a8e7f; line-height:1.5; margin-bottom:14px;">You haven't created anything here yet.</div>
+          <span style="display:inline-block; padding:10px 20px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:12.5px;">Create a project</span>
+        </div>
+        <div class="spec" style="margin-top:12px;">CTA creates the first thing. Also: "No saved creators yet" → Discover creators.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="color:#eab54a; margin-bottom:12px;">Zero results · query hid it</div>
+        <div style="background:#1b1510; border:1px dashed rgba(245,237,224,0.14); border-radius:16px; padding:22px; text-align:center;">
+          <div class="disp" style="font-size:16px; font-weight:700; margin-bottom:5px;">Nothing matches that</div>
+          <div style="font-size:12px; color:#9a8e7f; line-height:1.5; margin-bottom:12px;">Try changing your search or removing a few filters.</div>
+          <div style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-bottom:12px;">
+            <span style="background:#2c2019; border:1px solid rgba(226,104,63,0.35); color:#f0a483; font-size:11px; font-weight:600; padding:5px 10px; border-radius:100px;">Dance ✕</span>
+            <span style="background:#2c2019; border:1px solid rgba(226,104,63,0.35); color:#f0a483; font-size:11px; font-weight:600; padding:5px 10px; border-radius:100px;">Reykjavík ✕</span>
+          </div>
+          <span style="display:inline-block; padding:10px 20px; border-radius:100px; background:#211a15; border:1px solid rgba(245,237,224,0.34); font-weight:700; font-size:12.5px;">Clear filters</span>
+        </div>
+        <div class="spec" style="margin-top:12px;">Active filters stay visible and removable — dropping one is usually faster than starting again.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="color:#5bbf88; margin-bottom:12px;">First time · needs guidance</div>
+        <div style="background:#1b1510; border:1px solid rgba(91,191,136,0.3); border-radius:16px; padding:22px;">
+          <div class="disp" style="font-size:16px; font-weight:700; margin-bottom:5px;">Your first project</div>
+          <div style="font-size:12px; color:#9a8e7f; line-height:1.5; margin-bottom:12px;">Projects that fill up fastest name the work, the world, and the one role they need.</div>
+          <div style="display:flex; flex-direction:column; gap:7px; margin-bottom:14px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#c3b6a6;"><span style="width:16px; height:16px; border-radius:50%; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:800;">✓</span>Creative identity done</div>
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#c3b6a6;"><span style="width:16px; height:16px; border-radius:50%; border:2px solid #4a4038;"></span>Add a cover and a title</div>
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; color:#c3b6a6;"><span style="width:16px; height:16px; border-radius:50%; border:2px solid #4a4038;"></span>Name the role you need</div>
+          </div>
+          <span style="display:inline-block; padding:10px 20px; border-radius:100px; background:#e2683f; color:#17120e; font-weight:800; font-size:12.5px;">Start a project</span>
+        </div>
+        <div class="spec" style="margin-top:12px;">Teaches before it invites; progress carries over from onboarding.</div>
+      </div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:56px; font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Anatomy</b> — icon (44px circle, optional) · title, five words or fewer · one sentence, max 30ch · primary action · optional text action. Same layout, different sentence.</div>
+
+    <h3 id="forms" class="disp" style="font-size:21px; font-weight:700; margin:0 0 4px;">Form validation</h3>
+    <div class="spec" style="margin-bottom:18px;">Input states are in <a href="#input">Components</a>. This is when they fire.</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Timing</div>
+        <div style="display:grid; grid-template-columns:78px 1fr; gap:9px 14px; font-size:12.5px; margin-bottom:14px;">
+          <span class="mono" style="font-size:10.5px; color:#8fe0b4;">on blur</span><span style="color:#c3b6a6;">field checks once the user has clearly finished</span>
+          <span class="mono" style="font-size:10.5px; color:#8fe0b4;">on submit</span><span style="color:#c3b6a6;">everything; focus jumps to the first invalid field</span>
+          <span class="mono" style="font-size:10.5px; color:#8fe0b4;">on type</span><span style="color:#c3b6a6;">only after a failed submit, and only to clear the error</span>
+        </div>
+        <div class="spec"><b style="color:#f5ede0;">Avoid</b> — validating keystrokes on a first attempt. It reads as being corrected mid-sentence.</div>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="lbl" style="margin-bottom:12px;">Error anatomy · multiple errors</div>
+        <div style="background:#1b1510; border:1px solid rgba(214,79,79,0.4); border-radius:12px; padding:12px 14px; margin-bottom:12px;">
+          <div style="font-size:12.5px; font-weight:700; color:#e88787; margin-bottom:6px;">Two things need a look before we publish</div>
+          <div style="display:flex; flex-direction:column; gap:4px; font-size:12px; color:#c3b6a6;">
+            <span>· <a href="#forms">Project title</a> — add a title</span>
+            <span>· <a href="#forms">Portfolio link</a> — include the domain</span>
+          </div>
+        </div>
+        <div class="spec">Each error says what's wrong and how to fix it. Border + icon + text, never colour alone. One summary at the top of the form, linked to each field, plus the inline message; <span class="mono" style="font-size:11px; color:#f0a483;">aria-describedby</span> ties them together.</div>
+      </div>
+    </div>
+
+    <h3 id="flow" class="disp" style="font-size:21px; font-weight:700; margin:36px 0 4px;">Express interest — end to end</h3>
+    <div class="spec" style="margin-bottom:18px;">The product's central act. Five components have to agree for it to feel safe.</div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:16px;">
+      <div class="card" style="padding:16px;">
+        <div class="lbl" style="margin-bottom:10px;">01 default</div>
+        <div style="text-align:center; padding:10px; border-radius:100px; background:#e2683f; color:#17120e; font-size:12px; font-weight:800; margin-bottom:10px;">Express interest</div>
+        <div class="spec">Project open, one primary on screen, Save is a secondary icon.</div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div class="lbl" style="margin-bottom:10px;">02 hover / focus / press</div>
+        <div style="text-align:center; padding:10px; border-radius:100px; background:#f0794f; color:#17120e; font-size:12px; font-weight:800; margin-bottom:10px; box-shadow:0 0 0 3px rgba(226,104,63,0.35);">Express interest</div>
+        <div class="spec">Brighten, ring, scale 0.98. No text change — nothing has happened.</div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div class="lbl" style="margin-bottom:10px;">03 loading</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:7px; padding:10px; border-radius:100px; background:#e2683f; color:#17120e; font-size:11px; font-weight:800; margin-bottom:10px;"><span class="spinner" style="width:11px; height:11px; border-radius:50%; border:2px solid rgba(23,18,14,0.35); border-top-color:#17120e; display:inline-block;"></span>Sending…</div>
+        <div class="spec">Button goes <span class="mono" style="font-size:10.5px; color:#f0a483;">aria-busy</span> and non-interactive, so a double-click can't send twice.</div>
+      </div>
+      <div class="card" style="padding:16px; border-color:rgba(91,191,136,0.45);">
+        <div class="lbl" style="color:#8fe0b4; margin-bottom:10px;">04 success</div>
+        <div style="text-align:center; padding:10px; border-radius:100px; background:rgba(91,191,136,0.16); border:1px solid rgba(91,191,136,0.5); color:#8fe0b4; font-size:11.5px; font-weight:700; margin-bottom:8px;">✓ Interest sent</div>
+        <div style="display:flex; align-items:center; gap:7px; background:#1b1510; border:1px solid rgba(91,191,136,0.4); border-radius:10px; padding:8px 10px; margin-bottom:10px;"><span style="width:13px; height:13px; border-radius:50%; background:#5bbf88; color:#17120e; display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:800;">✓</span><span style="font-size:10.5px; font-weight:600;">Maya will be notified</span></div>
+        <div class="spec">CTA holds a durable selected state; toast dismisses; project status unchanged.</div>
+      </div>
+      <div class="card" style="padding:16px; border-color:rgba(214,79,79,0.45);">
+        <div class="lbl" style="color:#e88787; margin-bottom:10px;">05 error</div>
+        <div style="text-align:center; padding:10px; border-radius:100px; background:#e2683f; color:#17120e; font-size:12px; font-weight:800; margin-bottom:8px;">Express interest</div>
+        <div style="display:flex; align-items:center; gap:7px; background:#1b1510; border:1px solid rgba(214,79,79,0.4); border-radius:10px; padding:8px 10px; margin-bottom:10px;"><span style="color:#e88787; font-size:10px;">⚠</span><span style="font-size:10.5px; font-weight:600;">Couldn't send. <span style="color:#f0a483;">Try again</span></span></div>
+        <div class="spec">Button returns to default, retry lives in the toast, nothing typed is lost.</div>
+      </div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:80px; font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Principle</b> — "Interest sent" is a fact about the account, not a temporary button style. It survives reload; the project's own status never changes, because one person's interest isn't a change to the project.</div>
+
+    <!-- ============ 05 RESPONSIVE & A11Y ============ -->
+    <div style="display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid rgba(226,104,63,0.4); margin-bottom:36px;">
+      <span class="mono" style="font-size:13px; color:#e2683f;">05</span>
+      <h2 class="disp" style="font-size:32px; font-weight:800; margin:0;">Responsive &amp; accessibility</h2>
+    </div>
+
+    <h3 id="responsive" class="disp" style="font-size:21px; font-weight:700; margin:0 0 18px;">Layout by breakpoint</h3>
+    <div class="card" style="padding:22px; margin-bottom:16px; overflow-x:auto;">
+      <div style="display:grid; grid-template-columns:120px repeat(3,1fr); gap:16px 20px; min-width:820px; font-size:12.5px; align-items:start;">
+        <div></div>
+        <div class="lbl">desktop ≥1280</div><div class="lbl">tablet 768–1279</div><div class="lbl">mobile &lt;768</div>
+
+        <b style="color:#f5ede0;">Navigation</b>
+        <span style="color:#c3b6a6;">persistent left rail, labels visible</span>
+        <span style="color:#c3b6a6;">top bar, search collapses to an icon</span>
+        <span style="color:#c3b6a6;">bottom tab bar, four destinations</span>
+
+        <b style="color:#f5ede0;">Grids</b>
+        <span style="color:#c3b6a6;"><span class="mono" style="font-size:11px; color:#f0a483;">lg:grid-cols-3</span></span>
+        <span style="color:#c3b6a6;"><span class="mono" style="font-size:11px; color:#f0a483;">md:grid-cols-2</span></span>
+        <span style="color:#c3b6a6;"><span class="mono" style="font-size:11px; color:#f0a483;">grid-cols-1</span> · <span class="mono" style="font-size:11px; color:#f0a483;">gap-4</span> throughout</span>
+
+        <b style="color:#f5ede0;">Filters</b>
+        <span style="color:#c3b6a6;">sidebar, groups expanded</span>
+        <span style="color:#c3b6a6;">scrolling chip row + "More filters"</span>
+        <span style="color:#c3b6a6;">Sheet; active filters stay above results</span>
+
+        <b style="color:#f5ede0;">Cards</b>
+        <span style="color:#c3b6a6;">16:9 cover, full metadata</span>
+        <span style="color:#c3b6a6;">3:2 cover, tags cap at two</span>
+        <span style="color:#c3b6a6;">location and team size drop; CTA full-width</span>
+
+        <b style="color:#f5ede0;">Overlays</b>
+        <span style="color:#c3b6a6;">centred Dialog</span>
+        <span style="color:#c3b6a6;">centred Dialog</span>
+        <span style="color:#c3b6a6;">bottom Sheet — except destructive confirms</span>
+
+        <b style="color:#f5ede0;">Primary action</b>
+        <span style="color:#c3b6a6;">in the right rail, always in view</span>
+        <span style="color:#c3b6a6;">in flow under the story</span>
+        <span style="color:#c3b6a6;">fixed bottom bar with safe-area padding</span>
+
+        <b style="color:#f5ede0;">Screen edge</b>
+        <span style="color:#c3b6a6;"><span class="mono" style="font-size:11px; color:#f0a483;">p-16</span></span>
+        <span style="color:#c3b6a6;"><span class="mono" style="font-size:11px; color:#f0a483;">p-12</span></span>
+        <span style="color:#c3b6a6;"><span class="mono" style="font-size:11px; color:#f0a483;">p-4</span></span>
+      </div>
+    </div>
+    <div class="card" style="padding:14px 18px; margin-bottom:56px; font-size:12.5px; color:#c3b6a6;"><b style="color:#f5ede0;">Test</b> — at any width: can the user tell what this project is, who's behind it, and take the action, without scrolling twice? Title, creator, status and looking-for never drop.</div>
+
+    <h3 id="a11y" class="disp" style="font-size:21px; font-weight:700; margin:0 0 18px;">Accessibility</h3>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:80px;">
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Touch targets</div><div class="spec">44×44 minimum, including the save heart over a cover and the ✕ on a tag. Visual size may be smaller; the hit area is not.</div></div>
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Keyboard &amp; focus</div><div class="spec">DOM order matches reading order; feed cards are one tab stop. Overlays trap focus and return it to the trigger. <span class="mono" style="font-size:11px; color:#f0a483;">Esc</span> always closes. Focus ring is coral, never removed.</div></div>
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Colour independence</div><div class="spec">Error ⚠ + text · success ✓ + text · selected ✓ + border · status badges are words. Every state survives greyscale.</div></div>
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Labels &amp; announcements</div><div class="spec">Icon buttons name action and object — "Save Experimental Dance Film". Loading text goes through a polite live region so it's heard, not just seen. Errors use <span class="mono" style="font-size:11px; color:#f0a483;">aria-invalid</span> + <span class="mono" style="font-size:11px; color:#f0a483;">aria-describedby</span>.</div></div>
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Contrast</div><div class="spec">Body ≥4.5:1, large text and borders ≥3:1 — which is why the card border sits at coral 60% rather than the prettier 30%.</div></div>
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Reduced motion</div><div class="spec">Transitions cut to instant, sheets appear without travel, skeleton pulse stops. Spinners keep turning — they carry information.</div></div>
+    </div>
+
+    <!-- ============ 06 IMPLEMENTATION ============ -->
+    <div style="display:flex; align-items:baseline; gap:14px; padding-bottom:14px; border-bottom:1px solid rgba(226,104,63,0.4); margin-bottom:36px;">
+      <span class="mono" style="font-size:13px; color:#e2683f;">06</span>
+      <h2 class="disp" style="font-size:32px; font-weight:800; margin:0;">Implementation</h2>
+    </div>
+
+    <div id="implementation" style="display:flex; align-items:stretch; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
+      <div class="card" style="padding:15px 18px; flex:1; min-width:150px;"><div class="lbl" style="margin-bottom:5px;">foundations</div><div class="spec">colour, type, spacing, radius, elevation</div></div>
+      <div style="display:flex; align-items:center; color:#7d7263;">→</div>
+      <div class="card" style="padding:15px 18px; flex:1; min-width:150px;"><div class="lbl" style="margin-bottom:5px;">tokens</div><div class="mono" style="font-size:12px; color:#f0a483;">bg-primary · p-4</div></div>
+      <div style="display:flex; align-items:center; color:#7d7263;">→</div>
+      <div class="card" style="padding:15px 18px; flex:1; min-width:150px;"><div class="lbl" style="margin-bottom:5px;">components</div><div class="mono" style="font-size:12px; color:#f0a483;">&lt;Button&gt; &lt;Card&gt;</div></div>
+      <div style="display:flex; align-items:center; color:#7d7263;">→</div>
+      <div class="card" style="padding:15px 18px; flex:1; min-width:150px;"><div class="lbl" style="margin-bottom:5px;">patterns</div><div class="spec">ProjectCard, EmptyState, flows</div></div>
+      <div style="display:flex; align-items:center; color:#7d7263;">→</div>
+      <div class="card" style="padding:15px 18px; flex:1; min-width:150px;"><div class="lbl" style="margin-bottom:5px;">screens</div><div class="spec">Explore, Onboarding, Project detail</div></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px;">
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Tailwind</div><div class="spec"><span class="mono" style="font-size:11px; color:#f0a483;">theme.extend</span> holds every value in section 01. Semantic names only — <span class="mono" style="font-size:11px; color:#f0a483;">bg-primary</span>, not <span class="mono" style="font-size:11px; color:#f0a483;">bg-coral</span>.</div></div>
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">shadcn/ui</div><div class="spec">Primitives for Button, Input, Badge, Card, Dialog, Sheet, Toast, Tabs, Progress, Avatar, Command.</div></div>
+      <div class="card" style="padding:18px;"><div class="lbl" style="margin-bottom:7px;">Variants + props</div><div class="spec">Configuration only — <span class="mono" style="font-size:11px; color:#f0a483;">variant</span>, <span class="mono" style="font-size:11px; color:#f0a483;">size</span>, <span class="mono" style="font-size:11px; color:#f0a483;">state</span>. A new context earns a variant, not a fork.</div></div>
+    </div>
+
+    <div class="code" style="margin-bottom:16px;">&lt;<span class="kw">Button</span> <span class="tok">variant</span>=<span class="str">"primary"</span> <span class="tok">size</span>=<span class="str">"lg"</span> <span class="tok">loading</span>=<span class="str">{isSending}</span>&gt;Express interest&lt;/Button&gt;
+&lt;<span class="kw">Badge</span> <span class="tok">variant</span>=<span class="str">"success"</span>&gt;Verified&lt;/Badge&gt;      &lt;<span class="kw">Tag</span> <span class="tok">selected</span> <span class="tok">onRemove</span>=<span class="str">{…}</span>&gt;Sound design&lt;/Tag&gt;
+
+<span class="cm">// don't</span>
+&lt;<span class="kw">button</span> <span class="tok">className</span>=<span class="str">"bg-[#e2683f] rounded-[22px] px-[27px] text-[15.5px]"</span>&gt;…&lt;/button&gt;</div>
+
+    <div class="card" style="padding:16px 20px; margin-bottom:24px; font-size:13px; color:#c3b6a6;">
+      <b style="color:#f5ede0;">Values come from tokens. Components are configured through variants and props.</b> A bracket value in a component means the scale is missing something — change the scale, not the component.
+    </div>
+
+    <div class="card" style="padding:16px 20px; font-size:12.5px; color:#c3b6a6;">
+      <b style="color:#f5ede0;">Icons</b> — no icon font at prototype stage: a small fixed set of Unicode glyphs (‹ › ✕ ✓ ♡ ♥ ⌕ ◷ ⧉ ▾ ✦) at 15–19px, centred in a 36–44px circular target. Swap in a Lucide-style set at matching stroke weight when the product ships.
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

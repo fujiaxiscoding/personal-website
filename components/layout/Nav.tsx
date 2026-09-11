@@ -11,8 +11,12 @@ import { PageContainer } from "./PageContainer";
 export function Nav() {
   const pathname = usePathname();
 
+  if (pathname === "/work/creative-collab") {
+    return null;
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-line/0 bg-canvas/80 backdrop-blur-md">
+    <header className="site-nav sticky top-0 z-50 border-b border-line/0 bg-canvas/80 backdrop-blur-md">
       <PageContainer>
         <nav
           aria-label="Primary"

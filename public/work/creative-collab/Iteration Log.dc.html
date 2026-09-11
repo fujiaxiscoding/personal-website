@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { background:#100d0a; }
+  body { margin:0; color:#f5ede0; font-family:'Instrument Sans',sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#f0a483; text-decoration:none; }
+  a:hover { color:#e2683f; }
+</style>
+</helmet>
+
+<div style="max-width:1080px; margin:0 auto; padding:72px 40px 120px;">
+
+  <div style="margin-bottom:64px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#eab54a; margin-bottom:16px;">Creative Collab · process record</div>
+    <h1 style="margin:0 0 20px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:64px; line-height:0.95; letter-spacing:-0.02em;">Iteration log</h1>
+    <p style="margin:0; font-size:16px; line-height:1.65; color:#9a8e7f; max-width:64ch; text-wrap:pretty;">Every direction the product changed, why it changed, and what the change cost or bought. Ordered oldest to newest.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:72px;">
+    <div style="background:#1d1712; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), 0 12px 28px -14px rgba(0,0,0,0.85); border-radius:18px; padding:20px;">
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:34px; line-height:1; margin-bottom:6px;">9</div>
+      <div style="font-size:12.5px; color:#9a8e7f; line-height:1.45;">phases of work</div>
+    </div>
+    <div style="background:#1d1712; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), 0 12px 28px -14px rgba(0,0,0,0.85); border-radius:18px; padding:20px;">
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:34px; line-height:1; margin-bottom:6px;">5 → 3</div>
+      <div style="font-size:12.5px; color:#9a8e7f; line-height:1.45;">onboarding steps, then rebuilt as 8 screens</div>
+    </div>
+    <div style="background:#1d1712; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), 0 12px 28px -14px rgba(0,0,0,0.85); border-radius:18px; padding:20px;">
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:34px; line-height:1; margin-bottom:6px;">v2</div>
+      <div style="font-size:12.5px; color:#9a8e7f; line-height:1.45;">design system generations</div>
+    </div>
+    <div style="background:#1d1712; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.15), 0 12px 28px -14px rgba(0,0,0,0.85); border-radius:18px; padding:20px;">
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:34px; line-height:1; margin-bottom:6px;">1</div>
+      <div style="font-size:12.5px; color:#9a8e7f; line-height:1.45;">hero flow refined end to end</div>
+    </div>
+  </div>
+
+  <sc-for list="{{ phases }}" as="ph" hint-placeholder-count="8">
+    <div style="{{ ph.wrapStyle }}">
+      <div style="display:grid; grid-template-columns:132px 1fr; gap:36px; align-items:start;">
+        <div style="position:sticky; top:40px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; color:#17120e; background:#eab54a; padding:4px 9px; border-radius:5px; display:inline-block; margin-bottom:10px;">{{ ph.num }}</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#7d7263; line-height:1.5;">{{ ph.stage }}</div>
+        </div>
+        <div>
+          <h2 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:34px; line-height:1.05; letter-spacing:-0.01em;">{{ ph.title }}</h2>
+          <p style="margin:0 0 26px; font-size:15px; line-height:1.65; color:#c3b6a6; max-width:62ch; text-wrap:pretty;">{{ ph.intro }}</p>
+
+          <div style="display:flex; flex-direction:column; gap:11px; margin-bottom:24px;">
+            <sc-for list="{{ ph.changes }}" as="ch" hint-placeholder-count="3">
+              <div style="display:grid; grid-template-columns:88px 1fr; gap:16px; background:#1d1712; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.13), inset 0 -1px 0 rgba(0,0,0,0.4), 0 10px 24px -14px rgba(0,0,0,0.85); border-radius:16px; padding:16px 18px;">
+                <span style="{{ ch.kindStyle }}">{{ ch.kind }}</span>
+                <div>
+                  <div style="font-size:14.5px; font-weight:700; line-height:1.4; margin-bottom:5px;">{{ ch.what }}</div>
+                  <div style="font-size:13px; line-height:1.6; color:#9a8e7f;">{{ ch.why }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="{{ ph.outcomeStyle }}">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#8fe0b4; margin-bottom:8px;">What it settled</div>
+            <div style="font-size:13.5px; line-height:1.6; color:#d8ccbc;">{{ ph.outcome }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+
+  <div style="margin-top:24px; padding-top:44px; border-top:1px solid rgba(245,237,224,0.1);">
+    <h2 style="margin:0 0 10px; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:28px;">Things reversed along the way</h2>
+    <p style="margin:0 0 24px; font-size:14.5px; line-height:1.6; color:#9a8e7f; max-width:62ch;">Decisions made and then undone. Worth recording because the reversal is usually where the thinking actually happened.</p>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px;">
+      <sc-for list="{{ reversals }}" as="rv" hint-placeholder-count="4">
+        <div style="background:#1d1712; border:1px solid rgba(226,104,63,0.22); box-shadow:inset 0 1px 0 rgba(240,164,131,0.13), 0 10px 24px -14px rgba(0,0,0,0.85); border-radius:16px; padding:18px 20px;">
+          <div style="font-size:14px; font-weight:700; margin-bottom:8px; line-height:1.35;">{{ rv.title }}</div>
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:10px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+            <span style="color:#8a7d6e; text-decoration:line-through;">{{ rv.from }}</span>
+            <span style="color:#7d7263;">→</span>
+            <span style="color:#8fe0b4;">{{ rv.to }}</span>
+          </div>
+          <div style="font-size:12.5px; line-height:1.6; color:#9a8e7f;">{{ rv.why }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1160,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const kindColors = {
+      cut: ['#e88787', 'rgba(214,79,79,0.14)', 'rgba(214,79,79,0.4)'],
+      add: ['#8fe0b4', 'rgba(91,191,136,0.14)', 'rgba(91,191,136,0.4)'],
+      fix: ['#f0a483', 'rgba(226,104,63,0.14)', 'rgba(226,104,63,0.4)'],
+      shift: ['#eab54a', 'rgba(234,181,74,0.14)', 'rgba(234,181,74,0.4)']
+    };
+    const chip = (kind) => {
+      const [c, bg, br] = kindColors[kind] || kindColors.fix;
+      return `display:flex; align-items:center; justify-content:center; align-self:start; height:24px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:500; color:${c}; background:${bg}; border:1px solid ${br}; border-radius:6px;`;
+    };
+
+    const raw = [
+      ['01', 'discovery', 'Framing the problem',
+       'The starting brief was a platform for creators to find collaborators. The first decision was about what it must not feel like: a job board, an application portal, or a project-management tool.',
+       [['shift', 'Positioned against cold DMs, not against hiring platforms', 'Creators already have Instagram. What they lack is a low-stakes way to say "I want in" to a stranger\'s project without performing a pitch.'],
+        ['add', 'Named the emotional arc as the success metric', '"That looks interesting" → "I understand what this is" → "I want to be part of this" → "I know what happened." Every later decision was measured against this sequence.'],
+        ['cut', 'Dropped the idea of formal applications and role requirements', 'It made the product feel like recruitment. Participation over administration became a stated principle.']],
+       'The product intent: collaboration should feel like an invitation, not a workspace.'],
+
+      ['02', 'flows', 'Collapsing guest and member',
+       'The first structure had two separate journeys, a guest browse mode and a member mode, with a wall between them. Testing the click path on paper showed the wall landed in the wrong place.',
+       [['cut', 'Removed the separate guest experience', 'Two parallel journeys meant maintaining two versions of every screen, and it forced people to commit before they had seen anything worth committing to.'],
+        ['add', 'Signup triggered by the first trust action, not by entry', 'Browsing is free. The moment you express interest in a project, that is when the account matters, and the reason is obvious.'],
+        ['add', 'Return-to-context after onboarding', 'The flow ends by dropping you back on the exact project that made you sign up, so the detour has a visible payoff.']],
+       'One continuous journey: browse → trust action → identity → back to the original project.'],
+
+      ['03', 'onboarding', 'Cutting five steps to three',
+       'The original creative-identity flow asked five questions, two of which were abstract prompts about creative philosophy. Reading them aloud made the problem clear.',
+       [['cut', 'Removed two abstract questions', 'They asked people to theorise about their own work. Most answers would be either performative or blank.'],
+        ['fix', 'Rewrote prompts as conversational', '"A film, album or place that shaped how you make things" replaced a question about creative values. Concrete prompts get concrete answers.'],
+        ['shift', 'Reordered to disciplines → creative world → portfolio', 'Easiest first. Picking chips is warm-up; writing about yourself comes after you are already invested.']],
+       'Three steps that a real person will finish, in an order that builds momentum.'],
+
+      ['04', 'accessibility', 'Fixing contrast across the board',
+       'A pass against WCAG 1.4.11 found non-text contrast failures throughout, mostly card borders and status chips sitting on mid-tone fills.',
+       [['fix', 'Adopted the C1 treatment: coral edge on near-black fill', 'It kept the warm editorial character while getting every border and chip past the 3:1 threshold.'],
+        ['fix', 'Focus rings standardised to coral, never browser blue', 'Blue is not in the palette and reads as a system artifact in a product this warm.'],
+        ['add', 'Minimum 44px tap targets across every interactive element', 'Apple HIG baseline, applied to chips and icon buttons that had been smaller.']],
+       'The palette survived the audit without losing its personality.'],
+
+      ['05', 'layout', 'Desktop-first refactor',
+       'The screens had been drawn mobile-first out of habit, but browsing collaborators is a lean-back, comparison-heavy activity that wants width. The business logic also argues for desktop-first: before the user base is large enough, few people will bother downloading an app. Mobile matters once the product is commercialized and already has a consumer base — the mobile screens in this prototype exist mainly to demonstrate mobile design range, not because mobile is the near-term entry point.',
+       [['shift', 'Rebuilt project detail as three columns', 'Cover and vision, team and roles, and the action rail can all be visible at once instead of stacked behind scroll.'],
+        ['add', 'Multi-column grids and editorial layouts', 'Comparing four projects side by side is the actual browse behaviour.'],
+        ['add', 'Defined the breakpoint ladder', 'Desktop ≥1280 three columns, tablet 768–1279 two, mobile <768 single with Dialog becoming Sheet.']],
+       'Desktop is the design target; mobile is a first-class adaptation, not an afterthought.'],
+
+      ['06', 'design system', 'v1 → v2',
+       'v1 documented what components look like. It did not say when to use them, so it could not settle an argument. v2 was largely an editorial rebuild.',
+       [['add', 'Usage rules: Button hierarchy, Toast vs Modal, Badge vs Tag', 'These were the three decisions that kept getting re-litigated screen by screen.'],
+        ['add', 'Props vs anatomy, and Project Card anatomy', 'Separating configuration from structure is what lets one Button serve forty screens.'],
+        ['add', 'Component states with the question each must answer', 'Disabled answers "why can\'t I act?". Loading answers "what is happening?". Error and success answer "what changed, and what next?".'],
+        ['add', 'Product rationale and three principles up front', 'Participation over administration · Energy creates participation · Playful to enter, serious enough to commit — each shown on real iPhone screens.']],
+       'A system that answers how we decide, not just what exists.'],
+
+      ['07', 'prototype', 'Audit and the hero flow',
+       'Rather than build more screens, the existing prototype was audited against v2 and one flow was chosen to finish properly.',
+       [['shift', 'Chose Express Interest as the hero flow', 'It is the product\'s central value moment, and it touches the most components: card, dialog, form, validation, loading, toast, and a persistent state change afterwards.'],
+        ['add', 'Connected states across the flow, not as isolated examples', 'After success the CTA becomes "Interest sent" and the card carries a badge. A toast alone was not enough.'],
+        ['add', 'Meaningful edge cases only', 'Closed project, missing portfolio, failed send with retry. No invented complexity.']],
+       'One flow that demonstrates the system working, instead of many that demonstrate it existing.'],
+
+      ['08', 'craft', 'Detail passes',
+       'A long series of small corrections, most of them prompted by looking at the thing on a phone-sized frame and asking whether a real product would do that.',
+       [['fix', 'Modularised content that had been typed in as prose', 'Shelf contents, roles, bios and references became structured items rendered by one component instead of hand-written sentences.'],
+        ['fix', 'iOS fidelity: dynamic island, SVG status bar, safe-area framing', 'The earlier status bar was built from divs and clip-paths and looked approximate.'],
+        ['add', 'Full profile editing with validation', 'Name and what-you-make required, tags removable with a minimum of one, optional fields labelled. Blank saves now fail with a specific message.'],
+        ['add', 'Audio works get a real player', 'Waveform, play state and duration, rather than a coloured rectangle standing in for sound.'],
+        ['fix', 'Removed filler copy and unexplained symbols', 'Icons that were not in the system, decorative asterisks, and sentences that told the reader nothing.'],
+        ['shift', 'Card treatment: flat coral border → dimensional edge', 'Six options were built and compared. The chosen direction keeps coral at 22% with a top inner highlight, bottom inner shadow and a lift shadow, so the accent reads as light on an edge rather than an outline.']],
+       'The prototype stopped looking like a design file and started behaving like software.'],
+
+      ['09', 'trust & brand', 'Verified badges and a finished card',
+       'A pass focused on the two places a stranger decides whether to trust what they are looking at: the project card and the creator profile.',
+       [['add', 'Verified badge added to creator names', 'A small inline check next to the name on cards, and the full Badge component ("✓ Verified") on the creator profile header — the trust signal that stands in for a shared network.'],
+        ['fix', 'Card corrected: straightened, re-shadowed, reordered', 'The card and its badges had drifted to a slight, unintentional tilt with a harder shadow; both were fixed. The host row moved up under the tagline with a real photo avatar, and role chips now sit under an explicit "Looking for" label.'],
+        ['add', 'Brand mark finalized with its rationale', 'The wordmark and mark were locked, with the identity read as two panels opening like a curtain to reveal a spark where they collide — collaboration as two things meeting and making a third thing neither had alone.']],
+       'The card and the brand mark both now say, at a glance, that this is a real product, not a mockup.']
+    ];
+
+    const phases = raw.map(([num, stage, title, intro, changes, outcome], i) => ({
+      num, stage, title, intro, outcome,
+      wrapStyle: `padding-bottom:${i === raw.length - 1 ? 44 : 52}px; margin-bottom:${i === raw.length - 1 ? 0 : 52}px; border-bottom:1px solid rgba(245,237,224,0.08);`,
+      outcomeStyle: 'background:rgba(91,191,136,0.07); border:1px solid rgba(91,191,136,0.28); border-radius:14px; padding:14px 18px;',
+      changes: changes.map(([kind, what, why]) => ({ kind, what, why, kindStyle: chip(kind) }))
+    }));
+
+    const reversals = [
+      ['Guest mode as a separate product', 'two journeys', 'one journey', 'Maintaining parallel screens cost more than it bought, and the signup wall was in the wrong place.'],
+      ['Five-step creative identity', '5 steps', '3 steps', 'Two of the questions were abstract enough that most people would skip or fake them.'],
+      ['Mobile-first layout', 'mobile-first', 'desktop-first', 'The core activity is comparison, which needs width, and the business case argues desktop-first too — before the user base is large enough, few people download an app. Mobile screens stayed in to show mobile design range.'],
+      ['Onboarding as three screens', '3 screens', '8 screens', 'The short version skipped account creation, basics and the welcome moment, so the flow could not actually be walked end to end.'],
+      ['Edit mode as a footer-only change', 'button swap', 'full edit state', 'Changing only the button gave no signal that the page had changed mode. Now there is a banner, a cover overlay and inline fields.'],
+      ['Flat coral border on every card', '1px at 60%', 'edge at 22% + depth', 'Using the accent on every card spent it entirely, leaving nothing for emphasis and no sense of layering.']
+    ].map(([title, from, to, why]) => ({ title, from, to, why }));
+
+    return { phases, reversals };
+  }
+}
+</script>
+</body>
+</html>
