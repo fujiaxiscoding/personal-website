@@ -17,7 +17,10 @@ type Params = { slug: string };
 
 export function generateStaticParams() {
   return getAllProjects()
-    .filter((project) => project.slug !== "creative-collab")
+    .filter(
+      (project) =>
+        project.slug !== "creative-collab" && project.slug !== "vagus",
+    )
     .map((project) => ({ slug: project.slug }));
 }
 

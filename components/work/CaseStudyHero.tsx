@@ -26,13 +26,13 @@ export function CaseStudyHero({ project }: { project: Project }) {
         {project.summary}
       </p>
 
-      <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-y border-line py-8 sm:grid-cols-4">
+      <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-y border-line py-8 sm:grid-cols-4 sm:gap-x-8">
         {meta.map((item) => (
-          <div key={item.label}>
+          <div key={item.label} className="min-w-0">
             <dt className="text-xs uppercase tracking-[0.14em] text-ink-muted">
               {item.label}
             </dt>
-            <dd className="mt-1 text-sm text-ink">{item.value}</dd>
+            <dd className="mt-1 break-words text-sm text-ink">{item.value}</dd>
           </div>
         ))}
       </dl>

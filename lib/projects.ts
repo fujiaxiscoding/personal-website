@@ -7,6 +7,7 @@ export function getAllProjects(): Project[] {
       const { frontmatter } = getProjectSource(slug);
       return { slug, ...frontmatter } as Project;
     })
+    .filter((project) => project.published !== false)
     .sort((a, b) => {
       const orderA = a.order ?? Number.MAX_SAFE_INTEGER;
       const orderB = b.order ?? Number.MAX_SAFE_INTEGER;

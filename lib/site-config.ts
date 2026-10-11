@@ -3,14 +3,13 @@ export const siteConfig = {
   role: "Product Designer",
   tagline:
     "I design thoughtful AI-powered products that deepen people's connection with themselves, each other, and the world.",
-  bio: "I design thoughtful AI-powered products that deepen people's connection with themselves, each other, and the world. With a background spanning film, anthropology, and embodied knowledge, I bring together systems thinking, storytelling, and interaction design to create experiences that are both functional and emotionally resonant.",
+  bio: "I'm curious about how people make sense of the world, and how the things we create shape that experience.\n\nI like moving between observation and experimentation, asking questions, making things, and seeing what happens when they meet the real world.",
   openTo: "Open to Product Design internships and new grad roles.",
-  email: "hello@example.com",
-  location: "San Francisco, CA",
+  email: "jf4581@nyu.edu",
+  location: "New York & San Francisco",
   resumeUrl: "/resume.pdf",
   social: {
-    linkedin: "https://linkedin.com/in/yourname",
-    github: "https://github.com/yourname",
+    linkedin: "https://www.linkedin.com/in/jiaxi-f-8934083b3",
   },
   nav: [
     { label: "Work", href: "/work" },

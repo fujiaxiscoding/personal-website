@@ -14,6 +14,11 @@ export type Project = {
   coverImage?: string;
   coverAlt?: string;
   featured?: boolean;
+  /**
+   * When false, the project stays in content/ but is omitted from Work,
+   * home, and project routes. Defaults to true when omitted.
+   */
+  published?: boolean;
   /** Lower comes first in Work listings. */
   order?: number;
 };

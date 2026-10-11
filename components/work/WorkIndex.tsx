@@ -32,7 +32,7 @@ function IndexRow({
       href={`/work/${project.slug}`}
       onClick={() => setLabel(project.title)}
       onFocus={onActivate}
-      className="group grid grid-cols-[auto_1fr_auto] items-baseline gap-x-6 border-b border-line py-8 transition-colors first:pt-0 sm:grid-cols-[3rem_1fr_auto_auto]"
+      className="group grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-1 border-b border-line py-8 transition-colors first:pt-0 sm:grid-cols-[3rem_minmax(0,1fr)_auto_auto] sm:gap-x-6 sm:gap-y-0"
       {...cursorProps}
       onMouseEnter={() => {
         onActivate();
@@ -44,7 +44,7 @@ function IndexRow({
       </span>
 
       <Heading
-        className={`font-serif text-3xl italic transition-colors duration-500 ease-out-expo sm:text-5xl ${
+        className={`min-w-0 font-serif text-3xl italic transition-colors duration-500 ease-out-expo sm:text-5xl ${
           isActive ? "text-ink" : "text-ink-muted group-hover:text-ink"
         }`}
       >
@@ -60,7 +60,7 @@ function IndexRow({
         ))}
       </span>
 
-      <span className="flex items-center gap-2 justify-self-end text-sm text-ink-muted">
+      <span className="col-start-2 flex items-center gap-2 text-sm text-ink-muted sm:col-auto sm:justify-self-end">
         {project.category
           ? `${project.category} · ${project.year}`
           : project.year}

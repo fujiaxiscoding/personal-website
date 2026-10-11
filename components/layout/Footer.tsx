@@ -27,14 +27,6 @@ export function Footer() {
             >
               LinkedIn
             </a>
-            <a
-              href={siteConfig.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-ink"
-            >
-              GitHub
-            </a>
           </div>
         </div>
       </PageContainer>

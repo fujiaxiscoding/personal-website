@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Compass, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Section } from "@/components/layout/Section";
 import { MetaBar } from "@/components/layout/MetaBar";
@@ -14,9 +14,8 @@ import { siteConfig } from "@/lib/site-config";
 import { getFeaturedProjects } from "@/lib/projects";
 
 const heroLines = [
-  "I design thoughtful AI products",
-  "that deepen how people connect —",
-  "with themselves, each other, and the world.",
+  "I design to understand,",
+  "and understand to design.",
 ];
 
 export default function Home() {
@@ -35,6 +34,13 @@ export default function Home() {
           <h1 className="mt-6 max-w-4xl font-serif text-4xl leading-[1.08] tracking-tight text-ink sm:text-6xl sm:leading-[1.08] lg:text-7xl">
             <TextReveal lines={heroLines} delay={0.15} />
           </h1>
+
+          <FadeIn delay={0.55}>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
+              Working across product design, technology, and human experience.
+              With a background in film, anthropology, and business strategy.
+            </p>
+          </FadeIn>
 
           <FadeIn delay={0.75}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -57,7 +63,6 @@ export default function Home() {
               items={[
                 { icon: MapPin, label: siteConfig.location },
                 { icon: Sparkles, label: "Open to internships & new grad roles" },
-                { icon: Compass, label: "Film · Anthropology · AI Design" },
               ]}
               className="max-w-xl"
             />
@@ -95,9 +100,11 @@ export default function Home() {
             <h2 className="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
               About me
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-ink-muted">
-              {siteConfig.bio}
-            </p>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-ink-muted">
+              {siteConfig.bio.split("\n\n").map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
             <Link
               href="/about"
               className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-ink transition-colors hover:text-accent"
