@@ -27,7 +27,7 @@ export function MetaBar({
             {label}
           </span>
           {index < items.length - 1 ? (
-            <span className="hidden text-line sm:inline">/</span>
+            <span className="meta-slash hidden text-line sm:inline">/</span>
           ) : null}
         </span>
       ))}

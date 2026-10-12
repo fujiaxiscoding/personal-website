@@ -13,6 +13,10 @@ export type Project = {
   template?: "case-study" | "art" | "cinematic";
   coverImage?: string;
   coverAlt?: string;
+  /** Product screen shown on the home ticket (and on hover). */
+  ticketImage?: string;
+  /** Background art revealed on ticket hover. */
+  ticketBackground?: string;
   featured?: boolean;
   /**
    * When false, the project stays in content/ but is omitted from Work,

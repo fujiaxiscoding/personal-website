@@ -4,11 +4,11 @@ import { PageContainer } from "@/components/layout/PageContainer";
 import { Section } from "@/components/layout/Section";
 import { MetaBar } from "@/components/layout/MetaBar";
 import { Button } from "@/components/ui/Button";
-import { WorkIndex } from "@/components/work/WorkIndex";
+import { HalftoneImage } from "@/components/ui/HalftoneImage";
+import { WorkTicketGrid } from "@/components/work/WorkTicket";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Reveal } from "@/components/animations/Reveal";
 import { TextReveal } from "@/components/animations/TextReveal";
-import { ScrollCue } from "@/components/animations/ScrollCue";
 import { Magnetic } from "@/components/animations/Magnetic";
 import { siteConfig } from "@/lib/site-config";
 import { getFeaturedProjects } from "@/lib/projects";
@@ -23,20 +23,38 @@ export default function Home() {
 
   return (
     <>
-      <Section className="flex min-h-[88vh] flex-col justify-between pb-12 pt-28 sm:pt-32">
-        <PageContainer className="flex flex-1 flex-col justify-center">
+      <Section className="relative -mt-16 flex min-h-[max(100dvh,900px)] flex-col justify-between overflow-hidden pb-12 pt-[calc(8rem+1rem)]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-0 z-0 right-[max(0px,calc(50%-720px))] h-[min(900px,calc(74vw*0.849))] w-[min(1060px,74vw)]"
+        >
+          <HalftoneImage
+            src="/images/portrait.png"
+            gap={7}
+            radius={110}
+            ink="#a9a093"
+            warm="#ac4d2b"
+            imgBox={[0.06, 0, 1, 1.1]}
+            lo={0.16}
+            hi={0.78}
+            cutout={0.5}
+            taper={0.32}
+          />
+        </div>
+
+        <PageContainer className="relative z-10 flex flex-1 flex-col justify-center">
           <FadeIn>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
               {siteConfig.role}
             </p>
           </FadeIn>
 
-          <h1 className="mt-6 max-w-4xl font-serif text-4xl leading-[1.08] tracking-tight text-ink sm:text-6xl sm:leading-[1.08] lg:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl leading-[1.06] tracking-tight text-ink sm:text-6xl lg:text-[80px]">
             <TextReveal lines={heroLines} delay={0.15} />
           </h1>
 
           <FadeIn delay={0.55}>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
+            <p className="mt-6 max-w-[560px] text-base leading-relaxed text-[#3d3b36] sm:text-lg">
               Working across product design, technology, and human experience.
               With a background in film, anthropology, and business strategy.
             </p>
@@ -50,28 +68,31 @@ export default function Home() {
                   <ArrowRight className="size-4" />
                 </Button>
               </Magnetic>
-              <Button href="/contact" variant="secondary">
+              <Button
+                href="/contact"
+                variant="secondary"
+                className="border-[#d3ccbf] bg-canvas"
+              >
                 Get in touch
               </Button>
             </div>
           </FadeIn>
         </PageContainer>
 
-        <PageContainer>
-          <FadeIn delay={0.9} className="flex items-end justify-between gap-6">
+        <PageContainer className="relative z-10">
+          <FadeIn delay={0.9}>
             <MetaBar
               items={[
                 { icon: MapPin, label: siteConfig.location },
                 { icon: Sparkles, label: "Open to internships & new grad roles" },
               ]}
-              className="max-w-xl"
+              className="max-w-xl text-[#3d3b36] [&_.meta-slash]:text-[#d3ccbf]"
             />
-            <ScrollCue className="hidden shrink-0 sm:flex" />
           </FadeIn>
         </PageContainer>
       </Section>
 
-      <Section className="border-t border-line">
+      <Section>
         <PageContainer>
           <Reveal>
             <div className="flex items-end justify-between gap-4">
@@ -89,7 +110,7 @@ export default function Home() {
           </Reveal>
 
           <div className="mt-10">
-            <WorkIndex projects={featuredProjects} />
+            <WorkTicketGrid projects={featuredProjects} />
           </div>
         </PageContainer>
       </Section>

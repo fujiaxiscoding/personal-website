@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -10,13 +11,33 @@ import { PageContainer } from "./PageContainer";
 
 export function Nav() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
 
   if (pathname === "/work/creative-collab") {
     return null;
   }
 
   return (
-    <header className="site-nav sticky top-0 z-50 border-b border-line/0 bg-canvas/80 backdrop-blur-md">
+    <header
+      className={cn(
+        "site-nav sticky top-0 z-50 border-b transition-[background-color,backdrop-filter,border-color] duration-300",
+        isHome && !scrolled
+          ? "border-transparent bg-transparent"
+          : "border-line/0 bg-canvas/80 backdrop-blur-md",
+      )}
+    >
       <PageContainer>
         <nav
           aria-label="Primary"
@@ -40,7 +61,7 @@ export function Nav() {
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
                       "relative rounded-md px-3 py-2 text-sm transition-colors",
-                      isActive
+                      isActive || (isHome && !scrolled)
                         ? "text-ink"
                         : "text-ink-muted hover:text-ink",
                     )}
